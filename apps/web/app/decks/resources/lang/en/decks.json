@@ -3,15 +3,11 @@
   "title": "My decks",
   "tabs": {
     "import": "+ import list",
-    "remove": "Remove {name}"
+    "remove": "Remove {name}",
+    "overview": "My decks"
   },
   "hero": {
-    "eyebrow": "Active deck · {count, plural, one {# card} other {# cards}}"
-  },
-  "stats": {
-    "owned": "cards I own",
-    "pending": "missing",
-    "complete": "complete"
+    "eyebrow": "{count, plural, one {# unique card} other {# unique cards}}"
   },
   "toolbar": {
     "search": "search card…",
@@ -21,8 +17,9 @@
       "owned": "Owned"
     },
     "view": {
-      "list": "List",
-      "grid": "Grid"
+      "stacks": "Piles",
+      "grid": "Grid",
+      "list": "List"
     }
   },
   "categories": {
@@ -37,7 +34,8 @@
   },
   "status": {
     "owned": "owned",
-    "pending": "missing"
+    "pending": "missing",
+    "missing": "missing"
   },
   "card": {
     "notFound": "card not found on Scryfall",
@@ -45,8 +43,8 @@
     "toggle": "Mark {name} as owned"
   },
   "empty": {
-    "title": "No deck loaded",
-    "body": "Paste your decklist to build your shopping checklist.",
+    "title": "No decks yet",
+    "body": "Paste your first decklist to get started.",
     "action": "Import list"
   },
   "noResults": {
@@ -68,5 +66,47 @@
     "description": "The deck \"{name}\" and its progress will be deleted.",
     "confirm": "Remove",
     "cancel": "Cancel"
+  },
+  "aside": {
+    "featured": "Featured card",
+    "preview": "Preview"
+  },
+  "ring": {
+    "missing": "missing",
+    "complete": "Complete"
+  },
+  "progress": {
+    "owned": "{owned} of {total} cards",
+    "pending": "{count, plural, one {# card missing} other {# cards missing}}",
+    "complete": "{percent}% complete"
+  },
+  "overview": {
+    "eyebrow": "Overview",
+    "title": "My decks",
+    "stats": {
+      "decks": "{count, plural, one {deck} other {decks}}",
+      "owned": "cards I own",
+      "pending": "cards missing",
+      "complete": "complete overall"
+    },
+    "tile": {
+      "missing": "{percent}% missing",
+      "complete": "complete",
+      "cards": "{count, plural, one {# card} other {# cards}}",
+      "pending": "{count, plural, one {# missing} other {# missing}}",
+      "allSet": "all set",
+      "colors": "Colors: {colors}"
+    },
+    "newDeck": {
+      "title": "+ New deck",
+      "hint": "paste a decklist"
+    },
+    "shopping": {
+      "title": "Shopping list",
+      "count": "{count, plural, one {# card missing} other {# cards missing}} across all decks",
+      "note": "Cards needed by more than one deck come first.",
+      "showAll": "Show all ({count})",
+      "showLess": "Show less"
+    }
   }
 }

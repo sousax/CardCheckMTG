@@ -3,15 +3,11 @@
   "title": "Meus decks",
   "tabs": {
     "import": "+ importar lista",
-    "remove": "Remover {name}"
+    "remove": "Remover {name}",
+    "overview": "Meus decks"
   },
   "hero": {
-    "eyebrow": "Deck ativo · {count, plural, one {# carta} other {# cartas}}"
-  },
-  "stats": {
-    "owned": "cartas que tenho",
-    "pending": "pendentes",
-    "complete": "completo"
+    "eyebrow": "{count, plural, one {# carta única} other {# cartas únicas}}"
   },
   "toolbar": {
     "search": "buscar carta…",
@@ -21,8 +17,9 @@
       "owned": "Tenho"
     },
     "view": {
-      "list": "Lista",
-      "grid": "Grade"
+      "stacks": "Pilhas",
+      "grid": "Grade",
+      "list": "Lista"
     }
   },
   "categories": {
@@ -37,7 +34,8 @@
   },
   "status": {
     "owned": "tenho",
-    "pending": "pendente"
+    "pending": "pendente",
+    "missing": "falta"
   },
   "card": {
     "notFound": "carta não encontrada na Scryfall",
@@ -45,8 +43,8 @@
     "toggle": "Marcar {name} como tenho"
   },
   "empty": {
-    "title": "Nenhum deck carregado",
-    "body": "Cole sua decklist para montar a checklist de compras.",
+    "title": "Nenhum deck ainda",
+    "body": "Cole sua primeira decklist para começar.",
     "action": "Importar lista"
   },
   "noResults": {
@@ -68,5 +66,47 @@
     "description": "O deck \"{name}\" e o progresso dele serão apagados.",
     "confirm": "Remover",
     "cancel": "Cancelar"
+  },
+  "aside": {
+    "featured": "Carta destaque",
+    "preview": "Prévia"
+  },
+  "ring": {
+    "missing": "faltam",
+    "complete": "Completo"
+  },
+  "progress": {
+    "owned": "{owned} de {total} cartas",
+    "pending": "{count, plural, one {# carta pendente} other {# cartas pendentes}}",
+    "complete": "{percent}% completo"
+  },
+  "overview": {
+    "eyebrow": "Visão geral",
+    "title": "Meus decks",
+    "stats": {
+      "decks": "{count, plural, one {deck} other {decks}}",
+      "owned": "cartas que tenho",
+      "pending": "cartas pendentes",
+      "complete": "completo no geral"
+    },
+    "tile": {
+      "missing": "faltam {percent}%",
+      "complete": "completo",
+      "cards": "{count, plural, one {# carta} other {# cartas}}",
+      "pending": "{count, plural, one {# pendente} other {# pendentes}}",
+      "allSet": "tudo certo",
+      "colors": "Cores: {colors}"
+    },
+    "newDeck": {
+      "title": "+ Novo deck",
+      "hint": "cole uma decklist"
+    },
+    "shopping": {
+      "title": "Lista de compras",
+      "count": "{count, plural, one {# carta pendente} other {# cartas pendentes}} em todos os decks",
+      "note": "Cartas que aparecem em mais de um deck vêm primeiro.",
+      "showAll": "Ver todas ({count})",
+      "showLess": "Mostrar menos"
+    }
   }
 }

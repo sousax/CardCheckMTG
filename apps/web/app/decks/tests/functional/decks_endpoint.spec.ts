@@ -45,15 +45,51 @@ test.group('Endpoint /decks', (group) => {
     response.assertInertiaComponent('decks/index')
   })
 
-  test('GET /decks com decks abre o mais recente', async ({ client, assert }) => {
+  test('GET /decks mostra a visao geral com resumo e lista de compras', async ({
+    client,
+    assert,
+  }) => {
     const user = await UserFactory.create()
-    await DeckFactory.merge({ userId: user.id }).create()
-    const latest = await DeckFactory.merge({ userId: user.id }).create()
+    const ninjas = await DeckFactory.merge({ userId: user.id, name: 'Ninjas' }).create()
+    const burn = await DeckFactory.merge({ userId: user.id, name: 'Burn' }).create()
+    await ninjas.related('cards').createMany([
+      { name: 'Yuriko', quantity: 1, owned: false, category: 'creatures', colorIdentity: 'UB' },
+      { name: 'Sol Ring', quantity: 1, owned: false, category: 'artifacts', colorIdentity: '' },
+      { name: 'Island', quantity: 10, owned: true, category: 'lands', colorIdentity: '' },
+    ])
+    await burn.related('cards').createMany([
+      { name: 'Sol Ring', quantity: 1, owned: false, category: 'artifacts', colorIdentity: null },
+      { name: 'Shock', quantity: 4, owned: false, category: 'instants', colorIdentity: null },
+    ])
+    await DeckFactory.with('user').with('cards', 1).create()
 
-    const response = await client.get('/decks').loginAs(user).redirects(0)
+    const response = await client.get('/decks').loginAs(user).withInertia()
 
-    response.assertStatus(302)
-    assert.equal(response.header('location'), `/decks/${latest.id}`)
+    response.assertInertiaComponent('decks/index')
+    const props = response.inertiaProps as {
+      decks: {
+        name: string
+        featured: string
+        total: number
+        owned: number
+        colors: string | null
+      }[]
+      shoppingList: { name: string; quantity: number; decks: string[] }[]
+    }
+    assert.deepEqual(
+      props.decks.map((d) => [d.name, d.featured, d.total, d.owned, d.colors]),
+      [
+        ['Ninjas', 'Yuriko', 12, 10, 'UB'],
+        // No colour data at all stays unknown instead of claiming colourless.
+        ['Burn', 'Sol Ring', 5, 0, null],
+      ]
+    )
+    // Sol Ring is missing from both decks, so it leads the list.
+    assert.deepEqual(props.shoppingList, [
+      { name: 'Sol Ring', quantity: 2, decks: ['Ninjas', 'Burn'] },
+      { name: 'Shock', quantity: 4, decks: ['Burn'] },
+      { name: 'Yuriko', quantity: 1, decks: ['Ninjas'] },
+    ])
   })
 
   test('GET /decks/:id mostra o deck e so as abas do dono', async ({ client, assert }) => {
@@ -90,6 +126,7 @@ test.group('Endpoint /decks', (group) => {
     sinon.restore()
     sinon.stub(Scryfall.prototype, 'lookup').resolves({
       typeLines: new Map([['lightning bolt', 'Instant']]),
+      colors: new Map([['lightning bolt', 'R']]),
       notFound: new Set(),
     })
     const user = await UserFactory.create()

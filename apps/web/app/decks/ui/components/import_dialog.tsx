@@ -14,6 +14,7 @@ import {
 import { Input } from '@workspace/ui/components/input'
 import { Textarea } from '@workspace/ui/components/textarea'
 
+import { FormAlert } from '#common/ui/components/form_alert'
 import { useTranslation } from '#common/ui/hooks/use_translation'
 import { urlFor } from '~/app/client'
 
@@ -74,21 +75,19 @@ export function ImportDialog({ open, onOpenChange }: ImportDialogProps) {
             placeholder={t('decks.import.namePlaceholder')}
             aria-invalid={!!errors.name}
             disabled={processing}
-            className="h-10 bg-card"
+            className="bg-card"
           />
           {(errors.decklist || errors.name) && (
-            <p role="alert" className="self-start bg-red px-2 py-1 text-xs font-bold text-cream">
-              {errors.decklist ?? errors.name}
-            </p>
+            <FormAlert message={errors.decklist ?? errors.name} />
           )}
         </form>
         <DialogFooter className="m-0 gap-2.5 border-0 bg-transparent p-0">
           <DialogClose asChild>
-            <Button variant="outline" disabled={processing} className="h-9 px-3.5">
+            <Button variant="outline" disabled={processing}>
               {t('decks.import.cancel')}
             </Button>
           </DialogClose>
-          <Button type="submit" form="import-form" disabled={processing} className="h-9 px-3.5">
+          <Button type="submit" form="import-form" disabled={processing}>
             {processing ? t('decks.import.submitting') : t('decks.import.submit')}
           </Button>
         </DialogFooter>

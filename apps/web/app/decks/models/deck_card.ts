@@ -28,6 +28,10 @@ export default class DeckCard extends BaseModel {
   @column()
   declare notFound: boolean
 
+  /** WUBRG letters, "" for colorless, null when Scryfall wasn't reachable. */
+  @column()
+  declare colorIdentity: string | null
+
   @belongsTo(() => Deck)
   declare deck: BelongsTo<typeof Deck>
 }

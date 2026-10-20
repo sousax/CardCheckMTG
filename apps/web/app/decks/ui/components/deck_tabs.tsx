@@ -12,34 +12,38 @@ import type { DeckTab } from '#decks/ui/lib/types'
 
 interface DeckTabsProps {
   decks: DeckTab[]
+  /** Omitted on the overview, where the "Meus decks" tab is the active one. */
   activeId?: number
   onImport: () => void
 }
 
-const tab =
-  'inline-flex items-center gap-2 border-2 px-3 py-1.5 text-[13px] font-bold whitespace-nowrap outline-none focus-visible:shadow-hard-sm'
+// Lives on the red band. Inactive tabs keep an ink tint so 13px cream text
+// clears AA on the brand red; the active one is a cream "card".
+const tab = 'inline-flex items-center gap-2 border-2 text-[13px] font-bold whitespace-nowrap'
+const ACTIVE = 'border-ember bg-cream text-ember shadow-[3px_3px_0_var(--ember)]'
+const INACTIVE = 'border-transparent bg-ember/20 hover:bg-ember/35'
 
 export function DeckTabs({ decks, activeId, onImport }: DeckTabsProps) {
   const { t } = useTranslation()
   const [removing, setRemoving] = useState<DeckTab | null>(null)
 
   return (
-    <nav className="flex flex-wrap gap-2 pt-6" aria-label={t('decks.title')}>
+    <nav className="flex flex-wrap gap-2" aria-label={t('decks.title')}>
+      <Link
+        href={urlFor('decks.index')}
+        viewTransition
+        aria-current={activeId === undefined ? 'page' : undefined}
+        className={cn(tab, 'px-3 py-1.5', activeId === undefined ? ACTIVE : INACTIVE)}
+      >
+        {t('decks.tabs.overview')}
+      </Link>
       {decks.map((deck) => {
         const active = deck.id === activeId
         return (
-          <div
-            key={deck.id}
-            className={cn(
-              tab,
-              'p-0',
-              active
-                ? 'border-edge bg-foreground text-background shadow-hard-sm'
-                : 'border-edge/40 hover:border-edge'
-            )}
-          >
+          <div key={deck.id} className={cn(tab, active ? ACTIVE : INACTIVE)}>
             <Link
               href={urlFor('decks.show', { id: deck.id })}
+              viewTransition
               preserveScroll
               aria-current={active ? 'page' : undefined}
               className="py-1.5 pl-3 outline-none"
@@ -50,7 +54,7 @@ export function DeckTabs({ decks, activeId, onImport }: DeckTabsProps) {
               type="button"
               onClick={() => setRemoving(deck)}
               aria-label={t('decks.tabs.remove', { name: deck.name })}
-              className="py-1.5 pr-2.5 opacity-55 outline-none hover:text-red hover:opacity-100 focus-visible:opacity-100"
+              className="py-1.5 pr-2.5 opacity-55 outline-none hover:opacity-100 focus-visible:opacity-100"
             >
               <X className="size-3.5" strokeWidth={2.5} />
             </button>
@@ -60,7 +64,10 @@ export function DeckTabs({ decks, activeId, onImport }: DeckTabsProps) {
       <button
         type="button"
         onClick={onImport}
-        className={cn(tab, 'border-dashed border-edge/70 hover:border-edge')}
+        className={cn(
+          tab,
+          'border-dashed border-cream/70 bg-ember/20 px-3 py-1.5 hover:border-cream hover:bg-ember/35'
+        )}
       >
         {t('decks.tabs.import')}
       </button>

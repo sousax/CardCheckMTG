@@ -7,6 +7,7 @@ const BATCH_SIZE = 75
 interface ScryfallCard {
   name: string
   type_line?: string
+  color_identity?: string[]
   card_faces?: { name: string; type_line?: string }[]
 }
 
@@ -18,8 +19,17 @@ interface CollectionResponse {
 export interface CardLookup {
   /** Lowercased requested name → front-face type line. */
   typeLines: Map<string, string>
+  /** Lowercased requested name → color identity in WUBRG order ("" = colorless). */
+  colors: Map<string, string>
   /** Lowercased names Scryfall did not recognize. */
   notFound: Set<string>
+}
+
+const WUBRG = 'WUBRG'
+
+export function toWubrg(colors: Iterable<string>): string {
+  const set = new Set(colors)
+  return [...WUBRG].filter((c) => set.has(c)).join('')
 }
 
 export default class Scryfall {
@@ -28,7 +38,7 @@ export default class Scryfall {
    * reached so callers can fall back instead of failing the import.
    */
   async lookup(names: string[]): Promise<CardLookup | null> {
-    const result: CardLookup = { typeLines: new Map(), notFound: new Set() }
+    const result: CardLookup = { typeLines: new Map(), colors: new Map(), notFound: new Set() }
 
     try {
       for (let i = 0; i < names.length; i += BATCH_SIZE) {
@@ -49,8 +59,11 @@ export default class Scryfall {
         for (const card of body.data) {
           const front = card.card_faces?.[0]
           const typeLine = card.type_line ?? front?.type_line ?? ''
-          result.typeLines.set(card.name.toLowerCase(), typeLine)
-          if (front) result.typeLines.set(front.name.toLowerCase(), typeLine)
+          const colors = toWubrg(card.color_identity ?? [])
+          for (const name of front ? [card.name, front.name] : [card.name]) {
+            result.typeLines.set(name.toLowerCase(), typeLine)
+            result.colors.set(name.toLowerCase(), colors)
+          }
         }
         for (const missing of body.not_found) {
           if (missing.name) result.notFound.add(missing.name.toLowerCase())

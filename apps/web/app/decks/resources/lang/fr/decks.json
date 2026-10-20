@@ -3,15 +3,11 @@
   "title": "Mes decks",
   "tabs": {
     "import": "+ importer une liste",
-    "remove": "Supprimer {name}"
+    "remove": "Supprimer {name}",
+    "overview": "Mes decks"
   },
   "hero": {
-    "eyebrow": "Deck actif · {count, plural, one {# carte} other {# cartes}}"
-  },
-  "stats": {
-    "owned": "cartes possédées",
-    "pending": "manquantes",
-    "complete": "complet"
+    "eyebrow": "{count, plural, one {# carte unique} other {# cartes uniques}}"
   },
   "toolbar": {
     "search": "chercher une carte…",
@@ -21,8 +17,9 @@
       "owned": "Possédées"
     },
     "view": {
-      "list": "Liste",
-      "grid": "Grille"
+      "stacks": "Piles",
+      "grid": "Grille",
+      "list": "Liste"
     }
   },
   "categories": {
@@ -37,7 +34,8 @@
   },
   "status": {
     "owned": "possédée",
-    "pending": "manquante"
+    "pending": "manquante",
+    "missing": "manque"
   },
   "card": {
     "notFound": "carte introuvable sur Scryfall",
@@ -45,8 +43,8 @@
     "toggle": "Marquer {name} comme possédée"
   },
   "empty": {
-    "title": "Aucun deck chargé",
-    "body": "Collez votre decklist pour créer votre liste d’achats.",
+    "title": "Aucun deck pour l’instant",
+    "body": "Collez votre première decklist pour commencer.",
     "action": "Importer une liste"
   },
   "noResults": {
@@ -68,5 +66,47 @@
     "description": "Le deck « {name} » et sa progression seront supprimés.",
     "confirm": "Supprimer",
     "cancel": "Annuler"
+  },
+  "aside": {
+    "featured": "Carte vedette",
+    "preview": "Aperçu"
+  },
+  "ring": {
+    "missing": "manquent",
+    "complete": "Complet"
+  },
+  "progress": {
+    "owned": "{owned} sur {total} cartes",
+    "pending": "{count, plural, one {# carte manquante} other {# cartes manquantes}}",
+    "complete": "{percent} % complet"
+  },
+  "overview": {
+    "eyebrow": "Vue d’ensemble",
+    "title": "Mes decks",
+    "stats": {
+      "decks": "{count, plural, one {deck} other {decks}}",
+      "owned": "cartes possédées",
+      "pending": "cartes manquantes",
+      "complete": "complet au total"
+    },
+    "tile": {
+      "missing": "{percent} % manquant",
+      "complete": "complet",
+      "cards": "{count, plural, one {# carte} other {# cartes}}",
+      "pending": "{count, plural, one {# manquante} other {# manquantes}}",
+      "allSet": "tout est là",
+      "colors": "Couleurs : {colors}"
+    },
+    "newDeck": {
+      "title": "+ Nouveau deck",
+      "hint": "collez une decklist"
+    },
+    "shopping": {
+      "title": "Liste d’achats",
+      "count": "{count, plural, one {# carte manquante} other {# cartes manquantes}} dans tous les decks",
+      "note": "Les cartes utilisées par plusieurs decks viennent en premier.",
+      "showAll": "Tout afficher ({count})",
+      "showLess": "Afficher moins"
+    }
   }
 }

@@ -33,10 +33,12 @@ export class AuthAccessTokenSchema extends BaseModel {
 }
 
 export class DeckCardSchema extends BaseModel {
-  static $columns = ['category', 'createdAt', 'deckId', 'id', 'name', 'notFound', 'owned', 'quantity', 'updatedAt'] as const
+  static $columns = ['category', 'colorIdentity', 'createdAt', 'deckId', 'id', 'name', 'notFound', 'owned', 'quantity', 'updatedAt'] as const
   $columns = DeckCardSchema.$columns
   @column()
   declare category: string
+  @column()
+  declare colorIdentity: string | null
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
   @column()

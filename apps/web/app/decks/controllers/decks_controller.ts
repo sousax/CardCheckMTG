@@ -4,24 +4,29 @@ import DeleteDeck from '#decks/actions/delete_deck'
 import ImportDeck from '#decks/actions/import_deck'
 import Deck from '#decks/models/deck'
 import DeckPolicy from '#decks/policies/deck_policy'
+import GetShoppingList from '#decks/queries/get_shopping_list'
 import DeckTransformer from '#decks/transformers/deck_transformer'
 import { createDeckValidator } from '#decks/validators/decks'
 
 export default class DecksController {
-  async index({ auth, bouncer, inertia, response }: HttpContext) {
+  async index({ auth, bouncer, inertia }: HttpContext) {
     await bouncer.with(DeckPolicy).authorize('viewList')
 
-    const latest = await Deck.query()
-      .where('user_id', auth.getUserOrFail().id)
-      .orderBy('id', 'desc')
-      .first()
-    if (latest) return response.redirect().toRoute('decks.show', { id: latest.id })
+    const decks = await this.userDecks(auth.getUserOrFail().id).preload('cards', (cards) =>
+      cards.orderBy('id')
+    )
 
-    return inertia.render('decks/index', {})
+    return inertia.render('decks/index', {
+      decks: DeckTransformer.transform(decks).useVariant('forOverview'),
+      shoppingList: new GetShoppingList().handle(decks),
+    })
   }
 
   async show({ auth, bouncer, inertia, params }: HttpContext) {
-    const deck = await Deck.query().where('id', params.id).preload('cards').firstOrFail()
+    const deck = await Deck.query()
+      .where('id', params.id)
+      .preload('cards', (cards) => cards.orderBy('id'))
+      .firstOrFail()
     await bouncer.with(DeckPolicy).authorize('view', deck)
 
     const decks = await this.userDecks(auth.getUserOrFail().id)

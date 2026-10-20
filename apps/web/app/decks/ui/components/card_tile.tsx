@@ -26,7 +26,7 @@ export function CardTile({ card, onToggle }: { card: DeckCardData; onToggle: () 
           loading="lazy"
           onError={() => setFailed(true)}
           className={cn(
-            'block aspect-[5/7] w-full border-b-[3px] border-edge object-cover',
+            'block aspect-[5/7] w-full border-b-[3px] border-edge object-cover transition-opacity duration-[120ms]',
             card.owned && 'opacity-60'
           )}
         />
@@ -37,7 +37,7 @@ export function CardTile({ card, onToggle }: { card: DeckCardData; onToggle: () 
         onToggle={onToggle}
         className="absolute top-2.5 left-2.5"
       />
-      <div className="absolute top-2.5 right-2.5 border-2 border-edge bg-red px-2 py-0.5 text-sm font-bold text-cream">
+      <div className="absolute top-2.5 right-2.5 border-2 border-edge bg-red-strong px-2 py-0.5 text-sm font-bold text-cream">
         ×{card.quantity}
       </div>
       <div className="flex items-center justify-between gap-2 px-3 py-2.5 text-sm font-bold">

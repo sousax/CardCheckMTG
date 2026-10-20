@@ -19,6 +19,10 @@ test.group('ImportDeck', (group) => {
         ['lightning bolt', 'Instant'],
         ['monastery swiftspear', 'Creature — Human Monk'],
       ]),
+      colors: new Map([
+        ['lightning bolt', 'R'],
+        ['monastery swiftspear', 'R'],
+      ]),
       notFound: new Set(['carta inventada']),
     })
 
@@ -32,11 +36,11 @@ test.group('ImportDeck', (group) => {
     assert.equal(deck.userId, owner.id)
     assert.equal(deck.name, 'Burn')
     assert.deepEqual(
-      deck.cards.map((c) => [c.name, c.quantity, c.category, c.notFound, c.owned]),
+      deck.cards.map((c) => [c.name, c.quantity, c.category, c.notFound, c.owned, c.colorIdentity]),
       [
-        ['Lightning Bolt', 4, 'instants', false, false],
-        ['Monastery Swiftspear', 4, 'creatures', false, false],
-        ['Carta Inventada', 1, 'other', true, false],
+        ['Lightning Bolt', 4, 'instants', false, false, 'R'],
+        ['Monastery Swiftspear', 4, 'creatures', false, false, 'R'],
+        ['Carta Inventada', 1, 'other', true, false, null],
       ]
     )
   })

@@ -25,6 +25,8 @@ interface BreadcrumbItemProps {
 
 interface AuthenticatedLayoutProps extends React.PropsWithChildren {
   breadcrumbs?: BreadcrumbItemProps[]
+  /** Page-owned content for the band (e.g. deck tabs); replaces the main nav. */
+  bandNav?: React.ReactNode
 }
 
 const EMPTY_BREADCRUMBS: BreadcrumbItemProps[] = []
@@ -32,6 +34,7 @@ const EMPTY_BREADCRUMBS: BreadcrumbItemProps[] = []
 export default function AuthenticatedLayout({
   children,
   breadcrumbs = EMPTY_BREADCRUMBS,
+  bandNav,
 }: AuthenticatedLayoutProps) {
   const user = useUser()
   const { t } = useTranslation()
@@ -54,9 +57,15 @@ export default function AuthenticatedLayout({
 
             <AppLogo />
 
-            <div className="hidden h-full items-center lg:flex">
-              <NavHeaderMain items={navMain} />
-            </div>
+            {bandNav ? (
+              <div className="order-last flex min-w-0 basis-full lg:order-none lg:flex-1 lg:basis-auto">
+                {bandNav}
+              </div>
+            ) : (
+              <div className="hidden h-full items-center lg:flex">
+                <NavHeaderMain items={navMain} />
+              </div>
+            )}
 
             <div className="ml-auto flex items-center gap-1">
               <NotificationBell />

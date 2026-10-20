@@ -24,13 +24,18 @@ export function RowCheck({ checked, label, onToggle, className }: RowCheckProps)
         className
       )}
     >
-      <svg viewBox="0 0 12 12" fill="none" className={cn('size-3', !checked && 'opacity-0')}>
+      <svg viewBox="0 0 12 12" fill="none" className="size-3">
+        {/* pathLength=1 lets the dash offset draw the tick in, start to end. */}
         <path
           d="M2 6.5L4.7 9L10 3"
           stroke="currentColor"
           strokeWidth="2.2"
           strokeLinecap="round"
           strokeLinejoin="round"
+          pathLength={1}
+          strokeDasharray={1}
+          strokeDashoffset={checked ? 0 : 1}
+          className="transition-[stroke-dashoffset] duration-150 ease-out"
         />
       </svg>
     </button>

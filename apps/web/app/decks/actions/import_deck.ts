@@ -33,6 +33,7 @@ export default class ImportDeck {
             owned: false,
             category: typeLine ? categoryFromTypeLine(typeLine) : categoryFromName(entry.name),
             notFound: lookup?.notFound.has(key) ?? false,
+            colorIdentity: lookup?.colors.get(key) ?? null,
           }
         })
       )
