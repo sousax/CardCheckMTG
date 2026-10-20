@@ -23,13 +23,13 @@ export function ForgotPasswordForm({ className }: { className?: string }) {
         })
       }}
     >
-      {({ processing }) => (
+      {({ processing, errors }) => (
         <>
-          <div className="flex flex-col items-center gap-2 text-center">
-            <h1 className="text-2xl font-bold">{t('auth.forgot_password.title')}</h1>
-            <p className="text-balance text-sm text-muted-foreground">
-              {t('auth.forgot_password.description')}
-            </p>
+          <div className="flex flex-col gap-2">
+            <h2 className="font-display text-[28px] leading-none">
+              {t('auth.forgot_password.title')}
+            </h2>
+            <p className="text-sm text-muted-foreground">{t('auth.forgot_password.description')}</p>
           </div>
 
           <FieldSet>
@@ -42,26 +42,37 @@ export function ForgotPasswordForm({ className }: { className?: string }) {
                   id="email"
                   name="email"
                   type="email"
+                  autoComplete="email"
                   placeholder={t('auth.forgot_password.form.email.placeholder')}
                   required
+                  aria-invalid={!!errors?.email}
+                  aria-describedby={errors?.email ? 'email-error' : undefined}
                 />
-                <FieldError />
+                <FieldError id="email-error" />
               </Field>
 
-              <Field orientation="responsive">
-                <Button type="submit" className="w-full" disabled={processing}>
-                  {t('auth.forgot_password.actions.submit')}
-                </Button>
-              </Field>
+              <Button
+                type="submit"
+                className="h-auto min-h-9 w-full py-2 whitespace-normal"
+                disabled={processing}
+                aria-busy={processing}
+              >
+                {processing
+                  ? t('auth.forgot_password.actions.submitting')
+                  : t('auth.forgot_password.actions.submit')}
+              </Button>
             </FieldGroup>
           </FieldSet>
 
-          <div className="text-center text-sm">
+          <p className="text-sm text-muted-foreground">
             {t('auth.forgot_password.back_to_login.text')}{' '}
-            <Link route="auth.sign_in.show" className="underline underline-offset-4">
+            <Link
+              route="auth.sign_in.show"
+              className="font-bold text-red-text underline underline-offset-3"
+            >
               {t('auth.forgot_password.back_to_login.login')}
             </Link>
-          </div>
+          </p>
         </>
       )}
     </Form>

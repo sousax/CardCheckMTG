@@ -1,7 +1,9 @@
+import { useEffect, useRef } from 'react'
 import { Link } from '@adonisjs/inertia/react'
 import { usePage } from '@inertiajs/react'
 
 import { Field, FieldError, Form } from '#common/ui/components/form'
+import { FormAlert } from '#common/ui/components/form_alert'
 import { useTranslation } from '#common/ui/hooks/use_translation'
 
 import { cn } from '@workspace/ui/lib/utils'
@@ -11,10 +13,23 @@ import { FieldSet, FieldGroup, FieldLabel, FieldSeparator } from '@workspace/ui/
 
 import { PasswordInput } from '@workspace/ui/components/password-input'
 
+import { AuthModeToggle } from '#auth/ui/components/auth_mode_toggle'
+
 export function LoginForm({ className }: { className?: string }) {
   const { t } = useTranslation()
 
-  const { error: errorMessage } = usePage().flash
+  const flash = usePage().flash
+  const errorMessage = flash.error
+  // Only a wrong e-mail/password marks the fields; rate limits and
+  // "sign in to continue" are about the request, not the input.
+  const invalidCredentials = flash.errorCode === 'E_INVALID_CREDENTIALS'
+  const passwordRef = useRef<HTMLInputElement>(null)
+
+  // After a failed attempt the page reloads with focus on <body>; put the
+  // user back where they need to retype.
+  useEffect(() => {
+    if (errorMessage) passwordRef.current?.focus()
+  }, [flash, errorMessage])
 
   return (
     <Form
@@ -23,13 +38,11 @@ export function LoginForm({ className }: { className?: string }) {
       resetOnError={['password']}
       className={cn('flex flex-col gap-6', className)}
     >
-      {({ processing }) => (
+      {({ processing, errors }) => (
         <>
-          <div className="flex flex-col items-center gap-2 text-center">
-            <h1 className="text-2xl font-bold">{t('auth.signin.title')}</h1>
-            <p className="text-balance text-sm text-muted-foreground">
-              {t('auth.signin.description')}
-            </p>
+          <div className="flex flex-col gap-4">
+            <h2 className="font-display text-[28px] leading-none">{t('auth.signin.title')}</h2>
+            <AuthModeToggle mode="signin" />
           </div>
 
           <FieldSet>
@@ -40,39 +53,72 @@ export function LoginForm({ className }: { className?: string }) {
                   id="email"
                   name="email"
                   type="email"
+                  autoComplete="email"
                   placeholder={t('auth.signin.form.email.placeholder')}
                   required
+                  aria-invalid={!!errors?.email || invalidCredentials}
+                  aria-describedby={
+                    errors?.email ? 'email-error' : invalidCredentials ? 'signin-error' : undefined
+                  }
                 />
-                <FieldError />
+                <FieldError id="email-error" />
               </Field>
               <Field name="password">
                 <div className="flex items-center">
                   <FieldLabel htmlFor="password">{t('auth.signin.form.password.label')}</FieldLabel>
                   <Link
                     route="auth.forgot_password.show"
-                    className="ml-auto text-sm underline-offset-4 hover:underline"
+                    className="ml-auto text-xs font-medium text-red-text underline underline-offset-3 hover:text-orange"
                   >
                     {t('auth.signin.actions.forgot_password')}
                   </Link>
                 </div>
                 <PasswordInput
+                  ref={passwordRef}
                   id="password"
                   name="password"
+                  autoComplete="current-password"
                   placeholder={t('auth.signin.form.password.placeholder')}
                   required
+                  showLabel={t('common.password.show')}
+                  hideLabel={t('common.password.hide')}
+                  aria-invalid={!!errors?.password || invalidCredentials}
+                  aria-describedby={
+                    errors?.password
+                      ? 'password-error'
+                      : invalidCredentials
+                        ? 'signin-error'
+                        : undefined
+                  }
                 />
-                <FieldError />
+                <FieldError id="password-error" />
               </Field>
 
-              <Field orientation="responsive">
-                <Button type="submit" disabled={processing}>
-                  {t('auth.signin.actions.submit')}
-                </Button>
-              </Field>
+              {errorMessage && (
+                <FormAlert id="signin-error" message={errorMessage}>
+                  {invalidCredentials && (
+                    <Link
+                      route="auth.forgot_password.show"
+                      className="underline underline-offset-3"
+                    >
+                      {t('auth.signin.error.forgot')}
+                    </Link>
+                  )}
+                </FormAlert>
+              )}
 
-              <FieldError errors={errorMessage ? [{ message: errorMessage }] : []} />
+              <Button
+                type="submit"
+                className="h-auto min-h-9 w-full py-2 whitespace-normal"
+                disabled={processing}
+                aria-busy={processing}
+              >
+                {processing ? t('auth.signin.actions.submitting') : t('auth.signin.actions.submit')}
+              </Button>
 
-              <FieldSeparator>{t('auth.signin.divider')}</FieldSeparator>
+              <FieldSeparator className="[&_[data-slot=field-separator-content]]:bg-card">
+                {t('auth.signin.divider')}
+              </FieldSeparator>
 
               <Button variant="outline" className="w-full" asChild>
                 <Link route="social.create" routeParams={{ provider: 'google' }}>
@@ -99,12 +145,6 @@ export function LoginForm({ className }: { className?: string }) {
               </Button>
             </FieldGroup>
           </FieldSet>
-          <div className="text-center text-sm">
-            <span>{t('auth.signin.no_account.text')} </span>
-            <Link route="auth.sign_up.show" className="underline underline-offset-4">
-              {t('auth.signin.no_account.sign_up')}
-            </Link>
-          </div>
         </>
       )}
     </Form>

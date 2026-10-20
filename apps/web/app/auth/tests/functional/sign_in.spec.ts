@@ -66,6 +66,8 @@ test.group('Endpoint /login', (group) => {
     response.assertStatus(302)
     assert.equal(response.header('location'), '/login')
     assert.isUndefined(response.session().auth_web)
+    // The form keys off this code to mark e-mail and password as invalid.
+    response.assertFlashMessage('errorCode', 'E_INVALID_CREDENTIALS')
   })
 
   test('rejeita payload sem email/senha', async ({ client }) => {
