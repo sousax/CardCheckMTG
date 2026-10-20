@@ -1,6 +1,8 @@
 "use client";
 
-import { useTheme } from "next-themes";
+// The app themes through its own provider, not next-themes; reading next-themes
+// here left toasts following the OS theme instead of the app's.
+import { useTheme } from "@workspace/ui/components/theme-provider";
 import { Toaster as Sonner, type ToasterProps } from "sonner";
 import {
   CircleCheckIcon,
@@ -34,7 +36,9 @@ const Toaster = ({ ...props }: ToasterProps) => {
       }
       toastOptions={{
         classNames: {
-          toast: "cn-toast",
+          toast:
+            "cn-toast !rounded-none !border-2 !border-edge !font-sans !shadow-hard-md",
+          title: "!font-bold",
         },
       }}
       {...props}

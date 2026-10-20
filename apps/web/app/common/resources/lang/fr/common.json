@@ -9,7 +9,9 @@
       "settings": "Paramètres",
       "adminPanel": "Panneau admin",
       "logout": "Se déconnecter"
-    }
+    },
+    "toggleTheme": "Changer de thème",
+    "switchLanguage": "Changer de langue"
   },
   "table": {
     "filters": {
@@ -35,5 +37,9 @@
     "markAllRead": "Tout marquer comme lu",
     "empty": "Vous n'avez pas de notifications.",
     "ariaLabel": "Notifications"
+  },
+  "password": {
+    "show": "Afficher le mot de passe",
+    "hide": "Masquer le mot de passe"
   }
 }

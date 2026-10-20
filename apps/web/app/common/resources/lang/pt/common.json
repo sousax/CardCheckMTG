@@ -9,7 +9,9 @@
       "settings": "Configurações",
       "adminPanel": "Painel admin",
       "logout": "Sair"
-    }
+    },
+    "toggleTheme": "Alternar tema",
+    "switchLanguage": "Trocar idioma"
   },
   "table": {
     "filters": {
@@ -35,5 +37,9 @@
     "markAllRead": "Marcar todas como lidas",
     "empty": "Você não tem notificações.",
     "ariaLabel": "Notificações"
+  },
+  "password": {
+    "show": "Mostrar senha",
+    "hide": "Ocultar senha"
   }
 }

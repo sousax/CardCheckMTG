@@ -9,7 +9,9 @@
       "settings": "Settings",
       "adminPanel": "Admin panel",
       "logout": "Log out"
-    }
+    },
+    "toggleTheme": "Toggle theme",
+    "switchLanguage": "Switch language"
   },
   "table": {
     "filters": {
@@ -35,5 +37,9 @@
     "markAllRead": "Mark all as read",
     "empty": "You have no notifications.",
     "ariaLabel": "Notifications"
+  },
+  "password": {
+    "show": "Show password",
+    "hide": "Hide password"
   }
 }

@@ -21,7 +21,7 @@ const LOCALES = [
 
 export function LanguageSwitcher() {
   const { locale } = usePageProps<{ locale: string }>()
-  const { changeLanguage } = useTranslation()
+  const { changeLanguage, t } = useTranslation()
 
   function switchLocale(code: string) {
     router.post(
@@ -38,7 +38,7 @@ export function LanguageSwitcher() {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon">
           <Globe className="h-[1.2rem] w-[1.2rem]" />
-          <span className="sr-only">Switch language</span>
+          <span className="sr-only">{t('common.layout.switchLanguage')}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">

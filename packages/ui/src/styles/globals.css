@@ -56,21 +56,55 @@
 
   /* "Galeria" palette: fire accents, ink edges, hard offset shadows. */
   --color-red: var(--red);
+  --color-red-strong: var(--red-strong);
+  --color-red-text: var(--red-text);
   --color-orange: var(--orange);
   --color-amber: var(--amber);
   --color-cream: var(--cream);
   --color-ember: var(--ember);
   --color-edge: var(--edge);
   --color-surface: var(--surface);
+  /* Mana colours (vivid set from the design system), for colour identity. */
+  --color-mana-w: #fff1c2;
+  --color-mana-u: #3fb4f0;
+  --color-mana-b: #b07de0;
+  --color-mana-r: #ff5b33;
+  --color-mana-g: #3fcf73;
   --shadow-hard-sm: 3px 3px 0 var(--edge);
   --shadow-hard-md: 6px 6px 0 var(--edge);
   --shadow-hard-lg: 8px 8px 0 var(--red);
   --shadow-hard-hover: 9px 9px 0 var(--red);
   --shadow-hard-row: 4px 4px 0 var(--red);
+
+  /*
+   * Motion: the system's .12s, no bounce. "preview-in" is the design's
+   * card-preview entrance (fade up from .96).
+   */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-preview-in: preview-in 120ms var(--ease-out-expo);
+
+  @keyframes preview-in {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+  }  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+  }
 }
 
 :root {
+  /*
+   * Red has three roles. --red is the brand fire: the header band, art
+   * shadows, display type (large text only). Anything carrying small text
+   * uses a role tuned for AA: --red-strong behind cream text (buttons, pills,
+   * badges), --red-text for red text and edges on a surface.
+   */
   --red: #e0301e;
+  --red-strong: #c42b1c;
+  --red-text: #c42b1c;
   --orange: #f28a1e;
   --amber: #fcd34d;
   --cream: #fff8ec;
@@ -84,7 +118,7 @@
   --card-foreground: #170505;
   --popover: var(--surface);
   --popover-foreground: #170505;
-  --primary: var(--red);
+  --primary: var(--red-strong);
   --primary-foreground: var(--cream);
   --secondary: var(--amber);
   --secondary-foreground: var(--ember);
@@ -92,7 +126,7 @@
   --muted-foreground: #6e4a3a;
   --accent: #fdf0dc;
   --accent-foreground: #170505;
-  --destructive: var(--red);
+  --destructive: var(--red-text);
   --border: var(--edge);
   --input: var(--edge);
   --ring: var(--edge);
@@ -104,7 +138,7 @@
   --radius: 0rem;
   --sidebar: var(--surface);
   --sidebar-foreground: #170505;
-  --sidebar-primary: var(--red);
+  --sidebar-primary: var(--red-strong);
   --sidebar-primary-foreground: var(--cream);
   --sidebar-accent: #fdf0dc;
   --sidebar-accent-foreground: #170505;
@@ -114,6 +148,8 @@
 
 .dark {
   --red: #ef4444;
+  --red-strong: #d42a2a;
+  --red-text: #ef4444;
   --orange: #fb923c;
   --amber: #fde68a;
   --surface: #230b0a;
@@ -125,7 +161,7 @@
   --card-foreground: #fdf0dc;
   --popover: var(--surface);
   --popover-foreground: #fdf0dc;
-  --primary: var(--red);
+  --primary: var(--red-strong);
   --primary-foreground: var(--cream);
   --secondary: var(--amber);
   --secondary-foreground: var(--ember);
@@ -133,10 +169,10 @@
   --muted-foreground: #c9a48c;
   --accent: #2e100e;
   --accent-foreground: #fdf0dc;
-  --destructive: var(--red);
+  --destructive: var(--red-text);
   --border: var(--edge);
   --input: var(--edge);
-  --ring: var(--edge);
+  --ring: var(--amber);
   --chart-1: var(--red);
   --chart-2: var(--orange);
   --chart-3: var(--amber);
@@ -144,12 +180,49 @@
   --chart-5: var(--edge);
   --sidebar: var(--surface);
   --sidebar-foreground: #fdf0dc;
-  --sidebar-primary: var(--red);
+  --sidebar-primary: var(--red-strong);
   --sidebar-primary-foreground: var(--cream);
   --sidebar-accent: #2e100e;
   --sidebar-accent-foreground: #fdf0dc;
   --sidebar-border: var(--edge);
   --sidebar-ring: var(--edge);
+}
+
+/*
+ * Keyboard focus. Unlayered on purpose so it beats the primitives'
+ * `outline-none` utilities: the ring sits 2px off the ink edge, so it reads
+ * as a separate mark instead of merging into the border. Amber in dark, ink in
+ * light; cream on the red band, where neither has enough contrast.
+ */
+:where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+}
+.band :where(a, button, [tabindex]):focus-visible {
+  outline-color: var(--cream);
+}
+
+/* Page morphs (Inertia visits with viewTransition): quick cross-fade, and
+   named elements travel with a decisive ease-out. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 150ms;
+}
+::view-transition-group(*) {
+  animation-duration: 320ms;
+  animation-timing-function: var(--ease-out-expo);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+  /* Keep the state change legible, drop the movement. */
+  .animate-preview-in {
+    animation: fade-in 120ms ease-out;
+  }
 }
 
 @layer base {

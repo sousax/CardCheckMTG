@@ -47,6 +47,7 @@ export default class HttpExceptionHandler extends ExceptionHandler {
         return ctx.response.status(401).send({ message })
       }
       ctx.session?.flash('error', message)
+      ctx.session?.flash('errorCode', 'E_INVALID_CREDENTIALS')
       return ctx.response.redirect().toRoute('auth.sign_in.show')
     }
 

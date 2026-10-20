@@ -11,9 +11,10 @@ export interface NavHeaderMainProps {
   items: NavMainItem[]
 }
 
-// Tabs on the red band: transparent until hovered, cream "card" when active.
+// Tabs on the red band: ink-tinted (keeps small cream text above AA on the
+// brand red), cream "card" when active.
 const linkBase =
-  'flex h-9 w-max items-center justify-center border-2 border-transparent px-3 text-[13px] font-bold whitespace-nowrap transition-colors hover:bg-ember/20 focus-visible:bg-ember/20 outline-none'
+  'flex h-9 w-max items-center justify-center border-2 border-transparent bg-ember/20 px-3 text-[13px] font-bold whitespace-nowrap transition-colors hover:bg-ember/35 focus-visible:bg-ember/35 outline-none'
 const linkActive =
   'bg-cream text-ember border-ember shadow-[3px_3px_0_var(--ember)] hover:bg-cream focus-visible:bg-cream'
 
