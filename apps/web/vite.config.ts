@@ -10,7 +10,6 @@ export default defineConfig({
     adonisjs({
       entryPoints: ['app/core/ui/app/app.tsx'],
       serverEntryPoints: ['app/core/ui/app/ssr.tsx'],
-      assets: ['resources/images/**'],
       reload: ['resources/views/**/*.edge'],
     }),
   ],
