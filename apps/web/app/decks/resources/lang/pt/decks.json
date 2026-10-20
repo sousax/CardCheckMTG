@@ -1,0 +1,72 @@
+{
+  "defaultName": "Deck sem nome",
+  "title": "Meus decks",
+  "tabs": {
+    "import": "+ importar lista",
+    "remove": "Remover {name}"
+  },
+  "hero": {
+    "eyebrow": "Deck ativo · {count, plural, one {# carta} other {# cartas}}"
+  },
+  "stats": {
+    "owned": "cartas que tenho",
+    "pending": "pendentes",
+    "complete": "completo"
+  },
+  "toolbar": {
+    "search": "buscar carta…",
+    "filters": {
+      "all": "Todas",
+      "pending": "Pendentes",
+      "owned": "Tenho"
+    },
+    "view": {
+      "list": "Lista",
+      "grid": "Grade"
+    }
+  },
+  "categories": {
+    "creatures": "Criaturas",
+    "planeswalkers": "Planeswalkers",
+    "artifacts": "Artefatos",
+    "enchantments": "Encantamentos",
+    "instants": "Instantâneos",
+    "sorceries": "Feitiços",
+    "lands": "Terrenos",
+    "other": "Outros"
+  },
+  "status": {
+    "owned": "tenho",
+    "pending": "pendente"
+  },
+  "card": {
+    "notFound": "carta não encontrada na Scryfall",
+    "fixCategory": "corrigir categoria",
+    "toggle": "Marcar {name} como tenho"
+  },
+  "empty": {
+    "title": "Nenhum deck carregado",
+    "body": "Cole sua decklist para montar a checklist de compras.",
+    "action": "Importar lista"
+  },
+  "noResults": {
+    "title": "Nada por aqui",
+    "body": "Ajuste a busca ou o filtro.",
+    "action": "Limpar filtros"
+  },
+  "import": {
+    "title": "Importar lista",
+    "placeholder": "4 Lightning Bolt\n1 Sol Ring\n23 Island\n...\n\n(aceita \"4x Nome\", código de set entre parênteses, etc — eu ignoro o resto)",
+    "namePlaceholder": "nome do deck (opcional)",
+    "cancel": "Cancelar",
+    "submit": "Importar e buscar cartas",
+    "submitting": "Buscando cartas…",
+    "hint": "As imagens e os tipos das cartas vêm da Scryfall."
+  },
+  "delete": {
+    "title": "Remover deck?",
+    "description": "O deck \"{name}\" e o progresso dele serão apagados.",
+    "confirm": "Remover",
+    "cancel": "Cancelar"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "defaultName": "Untitled deck",
+  "title": "My decks",
+  "tabs": {
+    "import": "+ import list",
+    "remove": "Remove {name}"
+  },
+  "hero": {
+    "eyebrow": "Active deck · {count, plural, one {# card} other {# cards}}"
+  },
+  "stats": {
+    "owned": "cards I own",
+    "pending": "missing",
+    "complete": "complete"
+  },
+  "toolbar": {
+    "search": "search card…",
+    "filters": {
+      "all": "All",
+      "pending": "Missing",
+      "owned": "Owned"
+    },
+    "view": {
+      "list": "List",
+      "grid": "Grid"
+    }
+  },
+  "categories": {
+    "creatures": "Creatures",
+    "planeswalkers": "Planeswalkers",
+    "artifacts": "Artifacts",
+    "enchantments": "Enchantments",
+    "instants": "Instants",
+    "sorceries": "Sorceries",
+    "lands": "Lands",
+    "other": "Other"
+  },
+  "status": {
+    "owned": "owned",
+    "pending": "missing"
+  },
+  "card": {
+    "notFound": "card not found on Scryfall",
+    "fixCategory": "fix category",
+    "toggle": "Mark {name} as owned"
+  },
+  "empty": {
+    "title": "No deck loaded",
+    "body": "Paste your decklist to build your shopping checklist.",
+    "action": "Import list"
+  },
+  "noResults": {
+    "title": "Nothing here",
+    "body": "Adjust the search or the filter.",
+    "action": "Clear filters"
+  },
+  "import": {
+    "title": "Import list",
+    "placeholder": "4 Lightning Bolt\n1 Sol Ring\n23 Island\n...\n\n(accepts \"4x Name\", set codes in parentheses, etc — I ignore the rest)",
+    "namePlaceholder": "deck name (optional)",
+    "cancel": "Cancel",
+    "submit": "Import and fetch cards",
+    "submitting": "Fetching cards…",
+    "hint": "Card images and types come from Scryfall."
+  },
+  "delete": {
+    "title": "Remove deck?",
+    "description": "The deck \"{name}\" and its progress will be deleted.",
+    "confirm": "Remove",
+    "cancel": "Cancel"
+  }
+}

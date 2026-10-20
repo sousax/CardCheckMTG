@@ -1,0 +1,72 @@
+{
+  "defaultName": "Deck sans nom",
+  "title": "Mes decks",
+  "tabs": {
+    "import": "+ importer une liste",
+    "remove": "Supprimer {name}"
+  },
+  "hero": {
+    "eyebrow": "Deck actif · {count, plural, one {# carte} other {# cartes}}"
+  },
+  "stats": {
+    "owned": "cartes possédées",
+    "pending": "manquantes",
+    "complete": "complet"
+  },
+  "toolbar": {
+    "search": "chercher une carte…",
+    "filters": {
+      "all": "Toutes",
+      "pending": "Manquantes",
+      "owned": "Possédées"
+    },
+    "view": {
+      "list": "Liste",
+      "grid": "Grille"
+    }
+  },
+  "categories": {
+    "creatures": "Créatures",
+    "planeswalkers": "Planeswalkers",
+    "artifacts": "Artefacts",
+    "enchantments": "Enchantements",
+    "instants": "Éphémères",
+    "sorceries": "Rituels",
+    "lands": "Terrains",
+    "other": "Autres"
+  },
+  "status": {
+    "owned": "possédée",
+    "pending": "manquante"
+  },
+  "card": {
+    "notFound": "carte introuvable sur Scryfall",
+    "fixCategory": "corriger la catégorie",
+    "toggle": "Marquer {name} comme possédée"
+  },
+  "empty": {
+    "title": "Aucun deck chargé",
+    "body": "Collez votre decklist pour créer votre liste d’achats.",
+    "action": "Importer une liste"
+  },
+  "noResults": {
+    "title": "Rien ici",
+    "body": "Ajustez la recherche ou le filtre.",
+    "action": "Effacer les filtres"
+  },
+  "import": {
+    "title": "Importer une liste",
+    "placeholder": "4 Lightning Bolt\n1 Sol Ring\n23 Island\n...\n\n(accepte « 4x Nom », les codes d’extension entre parenthèses, etc — j’ignore le reste)",
+    "namePlaceholder": "nom du deck (facultatif)",
+    "cancel": "Annuler",
+    "submit": "Importer et chercher les cartes",
+    "submitting": "Recherche des cartes…",
+    "hint": "Les images et les types des cartes viennent de Scryfall."
+  },
+  "delete": {
+    "title": "Supprimer le deck ?",
+    "description": "Le deck « {name} » et sa progression seront supprimés.",
+    "confirm": "Supprimer",
+    "cancel": "Annuler"
+  }
+}

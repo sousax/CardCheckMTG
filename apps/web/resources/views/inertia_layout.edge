@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('resources/images/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('resources/images/favicon-16x16.png')}}">
+
+    <meta name="description" content="Cole sua decklist de Magic: The Gathering, marque as cartas que você já tem e veja o que falta comprar." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="MTG CardList" />
+    <meta property="og:description" content="Checklist de compras para decks de Magic: The Gathering." />
+
+    <title data-inertia>
+      MTG CardList
+    </title>
+
+    {{-- Apply the saved theme before first paint so SSR pages don't flash light. --}}
+    <script>
+      (function () {
+        var theme = 'dark'
+        try { theme = localStorage.getItem('vite-ui-theme') || 'dark' } catch (e) {}
+        if (theme === 'system') theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        document.documentElement.classList.add(theme)
+      })()
+    </script>
+
+    @stack('dumper')
+    @viteReactRefresh()
+    @inertiaHead()
+    @vite(['app/core/ui/app/app.tsx'])
+  </head>
+
+  <body class="min-h-screen w-screen font-sans">
+    @inertia()
+  </body>
+
+</html>

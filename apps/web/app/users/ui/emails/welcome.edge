@@ -1,0 +1,37 @@
+@email.layout({ title, preview: subtitle })
+  <mj-section background-color="#ffffff" padding="36px 40px 8px">
+    <mj-column>
+      <mj-text
+        padding="0 0 18px 0"
+        font-size="28px"
+        font-weight="800"
+        line-height="1.2"
+        color="#141820"
+        letter-spacing="-0.02em"
+      >
+        {{ title }}
+      </mj-text>
+      <mj-text padding="0 0 24px 0" font-size="16px" line-height="1.6" color="#3A4150">
+        {{ subtitle }}
+      </mj-text>
+    </mj-column>
+  </mj-section>
+
+  <mj-section background-color="#ffffff" padding="0 40px 28px">
+    <mj-column>
+      <mj-button href="{{ welcomeUrl }}" align="left" padding="0">{{ actionBtn }}</mj-button>
+    </mj-column>
+  </mj-section>
+
+  <mj-section background-color="#ffffff" padding="0 40px 36px">
+    <mj-column>
+      <mj-text padding="0" font-size="14.5px" line-height="1.6" color="#3A4150">
+        @if(welcomeMessage)
+          {{ welcomeMessage }}
+        @else
+          {{ defaultMessage }}
+        @end
+      </mj-text>
+    </mj-column>
+  </mj-section>
+@end

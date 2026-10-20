@@ -1,0 +1,74 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    name: typecheck + lint + test + coverage
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: root
+          POSTGRES_PASSWORD: root
+          POSTGRES_DB: app
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd=pg_isready
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: pnpm/action-setup@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Prepare env
+        working-directory: apps/web
+        run: |
+          cp .env.example .env
+          node ace generate:key --force
+
+      - name: Run migrations
+        working-directory: apps/web
+        run: node ace migration:run --force --no-schema-generate
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Test + coverage
+        working-directory: apps/web
+        run: pnpm coverage
+
+      - name: Coverage summary
+        if: success()
+        working-directory: apps/web
+        run: |
+          {
+            echo '## Coverage'
+            echo '```'
+            pnpm exec c8 report --reporter=text-summary
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

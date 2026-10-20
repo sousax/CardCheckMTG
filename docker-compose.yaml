@@ -1,0 +1,4 @@
+name: cardcheckmtg
+
+include:
+  - ./apps/web/docker-compose.yaml

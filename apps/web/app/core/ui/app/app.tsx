@@ -1,0 +1,77 @@
+import { resolvePageComponent } from '@adonisjs/inertia/helpers'
+import { TuyauProvider } from '@adonisjs/inertia/react'
+import { createInertiaApp, type ResolvedComponent } from '@inertiajs/react'
+import { createRoot, hydrateRoot } from 'react-dom/client'
+import { ThemeProvider } from '@workspace/ui/components/theme-provider'
+import { TooltipProvider } from '@workspace/ui/components/tooltip'
+import { ModalStackProvider } from 'adonis-inertia-modal/react'
+import 'adonis-inertia-modal/styles.css'
+import '../css/app.css'
+import { client } from './client'
+
+import { isSSREnableForPage } from 'config/ssr'
+import { I18nextProvider } from 'react-i18next'
+import { setupI18n } from '../config/i18n.config'
+
+const appName = import.meta.env.VITE_APP_NAME || 'MTG CardList'
+
+createInertiaApp({
+  progress: { color: 'black' },
+
+  title: (title) => (title ? `${title} - ${appName}` : appName),
+
+  resolve: (name) => {
+    const firstPart = name.split('/')[0]
+    const rest = name.split('/').slice(1).join('/')
+    return resolvePageComponent<ResolvedComponent>(
+      `/app/${firstPart}/ui/pages/${rest}.tsx`,
+      import.meta.glob<ResolvedComponent>('/app/*/ui/pages/**/*.tsx')
+    )
+  },
+
+  setup: ({ el, App, props }) => {
+    const componentName = props.initialPage.component
+    const isSSREnabled = isSSREnableForPage(componentName)
+
+    const { locale, fallbackLocale } = props.initialPage.props as unknown as {
+      locale?: string
+      fallbackLocale?: string
+    }
+
+    const i18nInstance = setupI18n({
+      locale: locale ?? 'en',
+      fallbackLocale: fallbackLocale ?? 'en',
+    })
+
+    if (isSSREnabled) {
+      hydrateRoot(
+        el,
+        <I18nextProvider i18n={i18nInstance}>
+          <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+            <TooltipProvider>
+              <TuyauProvider client={client}>
+                <ModalStackProvider>
+                  <App {...props} />
+                </ModalStackProvider>
+              </TuyauProvider>
+            </TooltipProvider>
+          </ThemeProvider>
+        </I18nextProvider>
+      )
+    } else {
+      createRoot(el).render(
+        <I18nextProvider i18n={i18nInstance}>
+          <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+            <TooltipProvider>
+              <TuyauProvider client={client}>
+                <ModalStackProvider>
+                  <App {...props} />
+                </ModalStackProvider>
+              </TuyauProvider>
+            </TooltipProvider>
+          </ThemeProvider>
+        </I18nextProvider>
+      )
+    }
+  },
+})
