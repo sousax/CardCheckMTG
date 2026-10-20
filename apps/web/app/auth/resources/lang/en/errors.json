@@ -1,0 +1,7 @@
+{
+  "E_TOO_MANY_REQUESTS": "Too many attempts, please try again later.",
+  "E_INVALID_CREDENTIALS": "Invalid email or password",
+  "E_VALIDATION_ERROR": "The form could not be saved. Please check the errors above.",
+  "E_AUTHORIZATION_FAILURE": "You don't have permission to perform this action.",
+  "E_UNAUTHORIZED_ACCESS": "Sign in to continue."
+}

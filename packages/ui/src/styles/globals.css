@@ -1,0 +1,245 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource/pirata-one";
+@import "@fontsource-variable/space-grotesk";
+@import "@fontsource-variable/jetbrains-mono";
+
+@custom-variant dark (&:is(.dark *));
+@source "../../../apps/**/*.{ts,tsx}";
+@source "../../../components/**/*.{ts,tsx}";
+@source "../**/*.{ts,tsx}";
+
+@theme inline {
+  --font-heading: var(--font-display);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  --font-sans: "Space Grotesk Variable", sans-serif;
+  --font-display: "Pirata One", serif;
+  --font-mono: "JetBrains Mono Variable", monospace;
+
+  /* "Galeria" palette: fire accents, ink edges, hard offset shadows. */
+  --color-red: var(--red);
+  --color-red-strong: var(--red-strong);
+  --color-red-text: var(--red-text);
+  --color-orange: var(--orange);
+  --color-amber: var(--amber);
+  --color-cream: var(--cream);
+  --color-ember: var(--ember);
+  --color-edge: var(--edge);
+  --color-surface: var(--surface);
+  /* Mana colours (vivid set from the design system), for colour identity. */
+  --color-mana-w: #fff1c2;
+  --color-mana-u: #3fb4f0;
+  --color-mana-b: #b07de0;
+  --color-mana-r: #ff5b33;
+  --color-mana-g: #3fcf73;
+  --shadow-hard-sm: 3px 3px 0 var(--edge);
+  --shadow-hard-md: 6px 6px 0 var(--edge);
+  --shadow-hard-lg: 8px 8px 0 var(--red);
+  --shadow-hard-hover: 9px 9px 0 var(--red);
+  --shadow-hard-row: 4px 4px 0 var(--red);
+
+  /*
+   * Motion: the system's .12s, no bounce. "preview-in" is the design's
+   * card-preview entrance (fade up from .96).
+   */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-preview-in: preview-in 120ms var(--ease-out-expo);
+
+  @keyframes preview-in {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+  }  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+  }
+}
+
+:root {
+  /*
+   * Red has three roles. --red is the brand fire: the header band, art
+   * shadows, display type (large text only). Anything carrying small text
+   * uses a role tuned for AA: --red-strong behind cream text (buttons, pills,
+   * badges), --red-text for red text and edges on a surface.
+   */
+  --red: #e0301e;
+  --red-strong: #c42b1c;
+  --red-text: #c42b1c;
+  --orange: #f28a1e;
+  --amber: #fcd34d;
+  --cream: #fff8ec;
+  --ember: #170505;
+  --surface: #fff8ec;
+  --edge: #170505;
+
+  --background: #f6ecdb;
+  --foreground: #170505;
+  --card: var(--surface);
+  --card-foreground: #170505;
+  --popover: var(--surface);
+  --popover-foreground: #170505;
+  --primary: var(--red-strong);
+  --primary-foreground: var(--cream);
+  --secondary: var(--amber);
+  --secondary-foreground: var(--ember);
+  --muted: #fdf0dc;
+  --muted-foreground: #6e4a3a;
+  --accent: #fdf0dc;
+  --accent-foreground: #170505;
+  --destructive: var(--red-text);
+  --border: var(--edge);
+  --input: var(--edge);
+  --ring: var(--edge);
+  --chart-1: var(--red);
+  --chart-2: var(--orange);
+  --chart-3: var(--amber);
+  --chart-4: #6e4a3a;
+  --chart-5: var(--edge);
+  --radius: 0rem;
+  --sidebar: var(--surface);
+  --sidebar-foreground: #170505;
+  --sidebar-primary: var(--red-strong);
+  --sidebar-primary-foreground: var(--cream);
+  --sidebar-accent: #fdf0dc;
+  --sidebar-accent-foreground: #170505;
+  --sidebar-border: var(--edge);
+  --sidebar-ring: var(--edge);
+}
+
+.dark {
+  --red: #ef4444;
+  --red-strong: #d42a2a;
+  --red-text: #ef4444;
+  --orange: #fb923c;
+  --amber: #fde68a;
+  --surface: #230b0a;
+  --edge: #fdf0dc;
+
+  --background: #160606;
+  --foreground: #fdf0dc;
+  --card: var(--surface);
+  --card-foreground: #fdf0dc;
+  --popover: var(--surface);
+  --popover-foreground: #fdf0dc;
+  --primary: var(--red-strong);
+  --primary-foreground: var(--cream);
+  --secondary: var(--amber);
+  --secondary-foreground: var(--ember);
+  --muted: #2e100e;
+  --muted-foreground: #c9a48c;
+  --accent: #2e100e;
+  --accent-foreground: #fdf0dc;
+  --destructive: var(--red-text);
+  --border: var(--edge);
+  --input: var(--edge);
+  --ring: var(--amber);
+  --chart-1: var(--red);
+  --chart-2: var(--orange);
+  --chart-3: var(--amber);
+  --chart-4: #c9a48c;
+  --chart-5: var(--edge);
+  --sidebar: var(--surface);
+  --sidebar-foreground: #fdf0dc;
+  --sidebar-primary: var(--red-strong);
+  --sidebar-primary-foreground: var(--cream);
+  --sidebar-accent: #2e100e;
+  --sidebar-accent-foreground: #fdf0dc;
+  --sidebar-border: var(--edge);
+  --sidebar-ring: var(--edge);
+}
+
+/*
+ * Keyboard focus. Unlayered on purpose so it beats the primitives'
+ * `outline-none` utilities: the ring sits 2px off the ink edge, so it reads
+ * as a separate mark instead of merging into the border. Amber in dark, ink in
+ * light; cream on the red band, where neither has enough contrast.
+ */
+:where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+}
+.band :where(a, button, [tabindex]):focus-visible {
+  outline-color: var(--cream);
+}
+
+/* Page morphs (Inertia visits with viewTransition): quick cross-fade, and
+   named elements travel with a decisive ease-out. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 150ms;
+}
+::view-transition-group(*) {
+  animation-duration: 320ms;
+  animation-timing-function: var(--ease-out-expo);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+  /* Keep the state change legible, drop the movement. */
+  .animate-preview-in {
+    animation: fade-in 120ms ease-out;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* Pirata One only ships weight 400; never fake-bold it. */
+    font-synthesis-weight: none;
+  }
+}
+
+.toaster [data-sonner-toast][data-styled="true"] [data-description] {
+  color: color-mix(
+    in oklab,
+    var(--popover-foreground) 78%,
+    transparent
+  ) !important;
+}

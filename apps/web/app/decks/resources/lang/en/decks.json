@@ -1,0 +1,112 @@
+{
+  "defaultName": "Untitled deck",
+  "title": "My decks",
+  "tabs": {
+    "import": "+ import list",
+    "remove": "Remove {name}",
+    "overview": "My decks"
+  },
+  "hero": {
+    "eyebrow": "{count, plural, one {# unique card} other {# unique cards}}"
+  },
+  "toolbar": {
+    "search": "search card…",
+    "filters": {
+      "all": "All",
+      "pending": "Missing",
+      "owned": "Owned"
+    },
+    "view": {
+      "stacks": "Piles",
+      "grid": "Grid",
+      "list": "List"
+    }
+  },
+  "categories": {
+    "creatures": "Creatures",
+    "planeswalkers": "Planeswalkers",
+    "artifacts": "Artifacts",
+    "enchantments": "Enchantments",
+    "instants": "Instants",
+    "sorceries": "Sorceries",
+    "lands": "Lands",
+    "other": "Other"
+  },
+  "status": {
+    "owned": "owned",
+    "pending": "missing",
+    "missing": "missing"
+  },
+  "card": {
+    "notFound": "card not found on Scryfall",
+    "fixCategory": "fix category",
+    "toggle": "Mark {name} as owned"
+  },
+  "empty": {
+    "title": "No decks yet",
+    "body": "Paste your first decklist to get started.",
+    "action": "Import list"
+  },
+  "noResults": {
+    "title": "Nothing here",
+    "body": "Adjust the search or the filter.",
+    "action": "Clear filters"
+  },
+  "import": {
+    "title": "Import list",
+    "placeholder": "4 Lightning Bolt\n1 Sol Ring\n23 Island\n...\n\n(accepts \"4x Name\", set codes in parentheses, etc — I ignore the rest)",
+    "namePlaceholder": "deck name (optional)",
+    "cancel": "Cancel",
+    "submit": "Import and fetch cards",
+    "submitting": "Fetching cards…",
+    "hint": "Card images and types come from Scryfall."
+  },
+  "delete": {
+    "title": "Remove deck?",
+    "description": "The deck \"{name}\" and its progress will be deleted.",
+    "confirm": "Remove",
+    "cancel": "Cancel"
+  },
+  "aside": {
+    "featured": "Featured card",
+    "preview": "Preview"
+  },
+  "ring": {
+    "missing": "missing",
+    "complete": "Complete"
+  },
+  "progress": {
+    "owned": "{owned} of {total} cards",
+    "pending": "{count, plural, one {# card missing} other {# cards missing}}",
+    "complete": "{percent}% complete"
+  },
+  "overview": {
+    "eyebrow": "Overview",
+    "title": "My decks",
+    "stats": {
+      "decks": "{count, plural, one {deck} other {decks}}",
+      "owned": "cards I own",
+      "pending": "cards missing",
+      "complete": "complete overall"
+    },
+    "tile": {
+      "missing": "{percent}% missing",
+      "complete": "complete",
+      "cards": "{count, plural, one {# card} other {# cards}}",
+      "pending": "{count, plural, one {# missing} other {# missing}}",
+      "allSet": "all set",
+      "colors": "Colors: {colors}"
+    },
+    "newDeck": {
+      "title": "+ New deck",
+      "hint": "paste a decklist"
+    },
+    "shopping": {
+      "title": "Shopping list",
+      "count": "{count, plural, one {# card missing} other {# cards missing}} across all decks",
+      "note": "Cards needed by more than one deck come first.",
+      "showAll": "Show all ({count})",
+      "showLess": "Show less"
+    }
+  }
+}

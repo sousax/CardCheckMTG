@@ -1,0 +1,245 @@
+/* eslint-disable prettier/prettier */
+import type { AdonisEndpoint } from '@tuyau/core/types'
+import type { Registry } from './schema.d.ts'
+import type { ApiDefinition } from './tree.d.ts'
+
+const placeholder: any = {}
+
+const routes = {
+  'drive.fs.serve': {
+    methods: ["GET","HEAD"],
+    pattern: '/uploads/*',
+    tokens: [{"old":"/uploads/*","type":0,"val":"uploads","end":""},{"old":"/uploads/*","type":2,"val":"*","end":""}],
+    types: placeholder as Registry['drive.fs.serve']['types'],
+  },
+  'auth.sign_in.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/login',
+    tokens: [{"old":"/login","type":0,"val":"login","end":""}],
+    types: placeholder as Registry['auth.sign_in.show']['types'],
+  },
+  'auth.sign_in.handle': {
+    methods: ["POST"],
+    pattern: '/login',
+    tokens: [{"old":"/login","type":0,"val":"login","end":""}],
+    types: placeholder as Registry['auth.sign_in.handle']['types'],
+  },
+  'auth.sign_out.handle': {
+    methods: ["POST"],
+    pattern: '/logout',
+    tokens: [{"old":"/logout","type":0,"val":"logout","end":""}],
+    types: placeholder as Registry['auth.sign_out.handle']['types'],
+  },
+  'auth.sign_up.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/sign-up',
+    tokens: [{"old":"/sign-up","type":0,"val":"sign-up","end":""}],
+    types: placeholder as Registry['auth.sign_up.show']['types'],
+  },
+  'auth.sign_up.handle': {
+    methods: ["POST"],
+    pattern: '/sign-up',
+    tokens: [{"old":"/sign-up","type":0,"val":"sign-up","end":""}],
+    types: placeholder as Registry['auth.sign_up.handle']['types'],
+  },
+  'auth.forgot_password.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/forgot-password',
+    tokens: [{"old":"/forgot-password","type":0,"val":"forgot-password","end":""}],
+    types: placeholder as Registry['auth.forgot_password.show']['types'],
+  },
+  'auth.forgot_password.handle': {
+    methods: ["POST"],
+    pattern: '/forgot-password',
+    tokens: [{"old":"/forgot-password","type":0,"val":"forgot-password","end":""}],
+    types: placeholder as Registry['auth.forgot_password.handle']['types'],
+  },
+  'auth.reset_password.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/reset-password/:token',
+    tokens: [{"old":"/reset-password/:token","type":0,"val":"reset-password","end":""},{"old":"/reset-password/:token","type":1,"val":"token","end":""}],
+    types: placeholder as Registry['auth.reset_password.show']['types'],
+  },
+  'auth.reset_password.handle': {
+    methods: ["POST"],
+    pattern: '/reset-password/:token',
+    tokens: [{"old":"/reset-password/:token","type":0,"val":"reset-password","end":""},{"old":"/reset-password/:token","type":1,"val":"token","end":""}],
+    types: placeholder as Registry['auth.reset_password.handle']['types'],
+  },
+  'social.create': {
+    methods: ["GET","HEAD"],
+    pattern: '/:provider/redirect',
+    tokens: [{"old":"/:provider/redirect","type":1,"val":"provider","end":""},{"old":"/:provider/redirect","type":0,"val":"redirect","end":""}],
+    types: placeholder as Registry['social.create']['types'],
+  },
+  'social.callback': {
+    methods: ["GET","HEAD"],
+    pattern: '/:provider/callback',
+    tokens: [{"old":"/:provider/callback","type":1,"val":"provider","end":""},{"old":"/:provider/callback","type":0,"val":"callback","end":""}],
+    types: placeholder as Registry['social.callback']['types'],
+  },
+  'locale.switch': {
+    methods: ["POST"],
+    pattern: '/switch/:locale',
+    tokens: [{"old":"/switch/:locale","type":0,"val":"switch","end":""},{"old":"/switch/:locale","type":1,"val":"locale","end":""}],
+    types: placeholder as Registry['locale.switch']['types'],
+  },
+  'users.invite.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/users/invite',
+    tokens: [{"old":"/users/invite","type":0,"val":"users","end":""},{"old":"/users/invite","type":0,"val":"invite","end":""}],
+    types: placeholder as Registry['users.invite.show']['types'],
+  },
+  'users.invite.handle': {
+    methods: ["POST"],
+    pattern: '/users/invite',
+    tokens: [{"old":"/users/invite","type":0,"val":"users","end":""},{"old":"/users/invite","type":0,"val":"invite","end":""}],
+    types: placeholder as Registry['users.invite.handle']['types'],
+  },
+  'users.impersonate.handle': {
+    methods: ["POST"],
+    pattern: '/users/impersonate/:id',
+    tokens: [{"old":"/users/impersonate/:id","type":0,"val":"users","end":""},{"old":"/users/impersonate/:id","type":0,"val":"impersonate","end":""},{"old":"/users/impersonate/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['users.impersonate.handle']['types'],
+  },
+  'users.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/users',
+    tokens: [{"old":"/users","type":0,"val":"users","end":""}],
+    types: placeholder as Registry['users.index']['types'],
+  },
+  'users.create': {
+    methods: ["GET","HEAD"],
+    pattern: '/users/create',
+    tokens: [{"old":"/users/create","type":0,"val":"users","end":""},{"old":"/users/create","type":0,"val":"create","end":""}],
+    types: placeholder as Registry['users.create']['types'],
+  },
+  'users.store': {
+    methods: ["POST"],
+    pattern: '/users',
+    tokens: [{"old":"/users","type":0,"val":"users","end":""}],
+    types: placeholder as Registry['users.store']['types'],
+  },
+  'users.edit': {
+    methods: ["GET","HEAD"],
+    pattern: '/users/:id/edit',
+    tokens: [{"old":"/users/:id/edit","type":0,"val":"users","end":""},{"old":"/users/:id/edit","type":1,"val":"id","end":""},{"old":"/users/:id/edit","type":0,"val":"edit","end":""}],
+    types: placeholder as Registry['users.edit']['types'],
+  },
+  'users.update': {
+    methods: ["PUT","PATCH"],
+    pattern: '/users/:id',
+    tokens: [{"old":"/users/:id","type":0,"val":"users","end":""},{"old":"/users/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['users.update']['types'],
+  },
+  'users.destroy': {
+    methods: ["DELETE"],
+    pattern: '/users/:id',
+    tokens: [{"old":"/users/:id","type":0,"val":"users","end":""},{"old":"/users/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['users.destroy']['types'],
+  },
+  'settings.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/settings',
+    tokens: [{"old":"/settings","type":0,"val":"settings","end":""}],
+    types: placeholder as Registry['settings.index']['types'],
+  },
+  'profile.update': {
+    methods: ["PUT"],
+    pattern: '/settings/profile',
+    tokens: [{"old":"/settings/profile","type":0,"val":"settings","end":""},{"old":"/settings/profile","type":0,"val":"profile","end":""}],
+    types: placeholder as Registry['profile.update']['types'],
+  },
+  'password.update': {
+    methods: ["PUT"],
+    pattern: '/settings/password',
+    tokens: [{"old":"/settings/password","type":0,"val":"settings","end":""},{"old":"/settings/password","type":0,"val":"password","end":""}],
+    types: placeholder as Registry['password.update']['types'],
+  },
+  'tokens.destroy': {
+    methods: ["DELETE"],
+    pattern: '/settings/tokens/:id',
+    tokens: [{"old":"/settings/tokens/:id","type":0,"val":"settings","end":""},{"old":"/settings/tokens/:id","type":0,"val":"tokens","end":""},{"old":"/settings/tokens/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['tokens.destroy']['types'],
+  },
+  'tokens.store': {
+    methods: ["POST"],
+    pattern: '/settings/tokens',
+    tokens: [{"old":"/settings/tokens","type":0,"val":"settings","end":""},{"old":"/settings/tokens","type":0,"val":"tokens","end":""}],
+    types: placeholder as Registry['tokens.store']['types'],
+  },
+  'notifications.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/notifications',
+    tokens: [{"old":"/notifications","type":0,"val":"notifications","end":""}],
+    types: placeholder as Registry['notifications.index']['types'],
+  },
+  'notifications.markRead': {
+    methods: ["POST"],
+    pattern: '/notifications/:id/read',
+    tokens: [{"old":"/notifications/:id/read","type":0,"val":"notifications","end":""},{"old":"/notifications/:id/read","type":1,"val":"id","end":""},{"old":"/notifications/:id/read","type":0,"val":"read","end":""}],
+    types: placeholder as Registry['notifications.markRead']['types'],
+  },
+  'notifications.markAllSeen': {
+    methods: ["POST"],
+    pattern: '/notifications/seen',
+    tokens: [{"old":"/notifications/seen","type":0,"val":"notifications","end":""},{"old":"/notifications/seen","type":0,"val":"seen","end":""}],
+    types: placeholder as Registry['notifications.markAllSeen']['types'],
+  },
+  'notifications.markAllRead': {
+    methods: ["POST"],
+    pattern: '/notifications/read',
+    tokens: [{"old":"/notifications/read","type":0,"val":"notifications","end":""},{"old":"/notifications/read","type":0,"val":"read","end":""}],
+    types: placeholder as Registry['notifications.markAllRead']['types'],
+  },
+  'home': {
+    methods: ["GET","HEAD"],
+    pattern: '/',
+    tokens: [{"old":"/","type":0,"val":"/","end":""}],
+    types: placeholder as Registry['home']['types'],
+  },
+  'decks.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/decks',
+    tokens: [{"old":"/decks","type":0,"val":"decks","end":""}],
+    types: placeholder as Registry['decks.index']['types'],
+  },
+  'decks.store': {
+    methods: ["POST"],
+    pattern: '/decks',
+    tokens: [{"old":"/decks","type":0,"val":"decks","end":""}],
+    types: placeholder as Registry['decks.store']['types'],
+  },
+  'decks.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/decks/:id',
+    tokens: [{"old":"/decks/:id","type":0,"val":"decks","end":""},{"old":"/decks/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['decks.show']['types'],
+  },
+  'decks.destroy': {
+    methods: ["DELETE"],
+    pattern: '/decks/:id',
+    tokens: [{"old":"/decks/:id","type":0,"val":"decks","end":""},{"old":"/decks/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['decks.destroy']['types'],
+  },
+  'decks.cards.update': {
+    methods: ["PATCH"],
+    pattern: '/decks/:deck_id/cards/:id',
+    tokens: [{"old":"/decks/:deck_id/cards/:id","type":0,"val":"decks","end":""},{"old":"/decks/:deck_id/cards/:id","type":1,"val":"deck_id","end":""},{"old":"/decks/:deck_id/cards/:id","type":0,"val":"cards","end":""},{"old":"/decks/:deck_id/cards/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['decks.cards.update']['types'],
+  },
+} as const satisfies Record<string, AdonisEndpoint>
+
+export { routes }
+
+export const registry = {
+  routes,
+  $tree: {} as ApiDefinition,
+}
+
+declare module '@tuyau/core/types' {
+  export interface UserRegistry {
+    routes: typeof routes
+    $tree: ApiDefinition
+  }
+}

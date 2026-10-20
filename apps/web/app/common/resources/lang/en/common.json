@@ -1,0 +1,45 @@
+{
+  "layout": {
+    "navMain": {
+      "decks": "My decks",
+      "administration": "Administration",
+      "users": "Users"
+    },
+    "navUser": {
+      "settings": "Settings",
+      "adminPanel": "Admin panel",
+      "logout": "Log out"
+    },
+    "toggleTheme": "Toggle theme",
+    "switchLanguage": "Switch language"
+  },
+  "table": {
+    "filters": {
+      "clear_filters": "Clear filters",
+      "no_results": "No results found.",
+      "nb_selected": "selected"
+    },
+    "row_actions": {
+      "clear": "Clear"
+    },
+    "no_results": "No results found.",
+    "pagination": {
+      "rows_per_page": "Rows per page",
+      "go_first_page": "Go to first page",
+      "go_previous_page": "Go to previous page",
+      "go_next_page": "Go to next page",
+      "go_last_page": "Go to last page",
+      "page_of": "Page {current} of {total}"
+    }
+  },
+  "notifications": {
+    "title": "Notifications",
+    "markAllRead": "Mark all as read",
+    "empty": "You have no notifications.",
+    "ariaLabel": "Notifications"
+  },
+  "password": {
+    "show": "Show password",
+    "hide": "Hide password"
+  }
+}
