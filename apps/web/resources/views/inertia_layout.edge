@@ -36,14 +36,33 @@
       })()
     </script>
 
-    {{-- GA4 enhanced measurement tracks Inertia's pushState navigations on its own. --}}
-    @if(app.inProduction && config('app.gaMeasurementId'))
-      <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('app.gaMeasurementId') }}"></script>
+    {{--
+      GA4 loads only after cookie consent (LGPD); the banner calls load() on "Aceitar".
+      Enhanced measurement tracks Inertia's pushState navigations on its own.
+      Outside production the banner still shows, but load() never fetches gtag.
+    --}}
+    @if(config('app.gaMeasurementId'))
       <script>
-        window.dataLayer = window.dataLayer || []
-        function gtag() { dataLayer.push(arguments) }
-        gtag('js', new Date())
-        gtag('config', '{{ config('app.gaMeasurementId') }}')
+        (function () {
+          var id = '{{ config('app.gaMeasurementId') }}'
+          var enabled = {{ app.inProduction }}
+          window.cardlistAnalytics = {
+            load: function () {
+              if (!enabled || window.gtag) return
+              var script = document.createElement('script')
+              script.async = true
+              script.src = 'https://www.googletagmanager.com/gtag/js?id=' + id
+              document.head.appendChild(script)
+              window.dataLayer = window.dataLayer || []
+              window.gtag = function () { window.dataLayer.push(arguments) }
+              window.gtag('js', new Date())
+              window.gtag('config', id)
+            },
+          }
+          try {
+            if (localStorage.getItem('cardlist-cookie-consent') === 'granted') window.cardlistAnalytics.load()
+          } catch (e) {}
+        })()
       </script>
     @end
 

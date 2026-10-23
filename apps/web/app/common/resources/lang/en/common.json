@@ -50,5 +50,12 @@
   "password": {
     "show": "Show password",
     "hide": "Hide password"
+  },
+  "cookies": {
+    "label": "Cookie notice",
+    "message": "We use Google Analytics cookies to understand how the site is used. Declining does not remove any feature.",
+    "accept": "Accept",
+    "decline": "Decline",
+    "preferences": "Cookie preferences"
   }
 }

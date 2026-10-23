@@ -8,6 +8,7 @@ import { Toaster } from '@workspace/ui/components/sonner'
 import { cn } from '@workspace/ui/lib/utils'
 
 import { AppLogo } from '#common/ui/components/app_logo'
+import { openCookiePreferences } from '#common/ui/components/cookie_banner'
 import { LanguageSwitcher } from '#common/ui/components/language_switcher'
 import { PaletteSwitcher } from '#common/ui/components/palette_switcher'
 import useFlashToasts from '#common/ui/hooks/use_flash_toasts'
@@ -347,6 +348,13 @@ export default function MarketingIndexPage({ turnstileSiteKey }: { turnstileSite
         <a href="#contato" className="font-semibold text-foreground hover:text-red-text">
           {t('marketing.nav.contact')}
         </a>
+        <button
+          type="button"
+          onClick={openCookiePreferences}
+          className="font-semibold text-foreground hover:text-red-text"
+        >
+          {t('common.cookies.preferences')}
+        </button>
         <p className="max-w-[560px] leading-normal">{t('marketing.footer.disclaimer')}</p>
       </footer>
     </>

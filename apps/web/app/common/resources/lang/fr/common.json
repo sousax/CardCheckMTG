@@ -50,5 +50,12 @@
   "password": {
     "show": "Afficher le mot de passe",
     "hide": "Masquer le mot de passe"
+  },
+  "cookies": {
+    "label": "Bandeau cookies",
+    "message": "Nous utilisons les cookies de Google Analytics pour comprendre comment le site est utilisé. Refuser ne retire aucune fonctionnalité.",
+    "accept": "Accepter",
+    "decline": "Refuser",
+    "preferences": "Préférences cookies"
   }
 }

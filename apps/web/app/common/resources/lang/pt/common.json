@@ -50,5 +50,12 @@
   "password": {
     "show": "Mostrar senha",
     "hide": "Ocultar senha"
+  },
+  "cookies": {
+    "label": "Aviso de cookies",
+    "message": "Usamos cookies do Google Analytics para entender como o site é usado. Recusar não tira nenhuma função do site.",
+    "accept": "Aceitar",
+    "decline": "Recusar",
+    "preferences": "Preferências de cookies"
   }
 }

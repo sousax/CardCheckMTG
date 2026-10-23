@@ -8,6 +8,7 @@ import { ModalStackProvider } from 'adonis-inertia-modal/react'
 import 'adonis-inertia-modal/styles.css'
 import '../css/app.css'
 import { client } from './client'
+import { CookieBanner } from '#common/ui/components/cookie_banner'
 
 import { isSSREnableForPage } from 'config/ssr'
 import { I18nextProvider } from 'react-i18next'
@@ -52,6 +53,7 @@ createInertiaApp({
               <TuyauProvider client={client}>
                 <ModalStackProvider>
                   <App {...props} />
+                  <CookieBanner />
                 </ModalStackProvider>
               </TuyauProvider>
             </TooltipProvider>
@@ -66,6 +68,7 @@ createInertiaApp({
               <TuyauProvider client={client}>
                 <ModalStackProvider>
                   <App {...props} />
+                  <CookieBanner />
                 </ModalStackProvider>
               </TuyauProvider>
             </TooltipProvider>
