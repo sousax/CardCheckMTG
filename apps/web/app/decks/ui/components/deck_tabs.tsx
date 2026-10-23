@@ -18,7 +18,7 @@ interface DeckTabsProps {
 }
 
 const tab =
-  'inline-flex items-center gap-2 rounded-md border text-[13px] font-semibold whitespace-nowrap transition-colors duration-150'
+  'inline-flex shrink-0 items-center gap-2 rounded-md border text-[13px] font-semibold whitespace-nowrap transition-colors duration-150 pointer-coarse:min-h-11'
 const ACTIVE = 'border-edge bg-surface-2 text-foreground'
 const INACTIVE =
   'border-transparent text-muted-foreground hover:bg-surface-hover hover:text-foreground'
@@ -28,7 +28,10 @@ export function DeckTabs({ decks, activeId, onImport }: DeckTabsProps) {
   const [removing, setRemoving] = useState<DeckTab | null>(null)
 
   return (
-    <nav className="flex flex-wrap gap-2" aria-label={t('decks.title')}>
+    <nav
+      className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0"
+      aria-label={t('decks.title')}
+    >
       <Link
         href={urlFor('decks.index')}
         viewTransition
@@ -54,7 +57,7 @@ export function DeckTabs({ decks, activeId, onImport }: DeckTabsProps) {
               type="button"
               onClick={() => setRemoving(deck)}
               aria-label={t('decks.tabs.remove', { name: deck.name })}
-              className="py-2 pr-2.5 opacity-55 outline-none hover:opacity-100 focus-visible:opacity-100"
+              className="self-stretch py-2 pr-2.5 opacity-55 outline-none hover:opacity-100 focus-visible:opacity-100 pointer-coarse:flex pointer-coarse:w-11 pointer-coarse:items-center pointer-coarse:justify-center pointer-coarse:pr-0"
             >
               <X className="size-3.5" strokeWidth={2.5} />
             </button>
@@ -64,10 +67,7 @@ export function DeckTabs({ decks, activeId, onImport }: DeckTabsProps) {
       <button
         type="button"
         onClick={onImport}
-        className={cn(
-          tab,
-          'border-dashed border-edge px-3.5 py-2 text-red-text hover:bg-red-tint'
-        )}
+        className={cn(tab, 'border-dashed border-edge px-3.5 py-2 text-red-text hover:bg-red-tint')}
       >
         {t('decks.tabs.import')}
       </button>

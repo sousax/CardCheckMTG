@@ -55,8 +55,10 @@
   },
   "import": {
     "title": "Importar lista",
+    "listLabel": "Decklist",
     "placeholder": "4 Lightning Bolt\n1 Sol Ring\n23 Island\n...\n\n(aceita \"4x Nome\", código de set entre parênteses, etc — eu ignoro o resto)",
-    "namePlaceholder": "nome do deck (opcional)",
+    "nameLabel": "Nome do deck (opcional)",
+    "namePlaceholder": "ex.: Elfos de Lathril",
     "cancel": "Cancelar",
     "submit": "Importar e buscar cartas",
     "submitting": "Buscando cartas…",
@@ -73,30 +75,27 @@
     "preview": "Prévia"
   },
   "ring": {
-    "missing": "faltam",
+    "owned": "tenho",
     "complete": "Completo"
   },
   "progress": {
     "owned": "{owned} de {total} cartas",
-    "pending": "{count, plural, one {# carta pendente} other {# cartas pendentes}}",
+    "pending": "{count, plural, one {falta # carta} other {faltam # cartas}}",
     "complete": "{percent}% completo"
   },
   "overview": {
-    "eyebrow": "Visão geral",
     "title": "Meus decks",
     "stats": {
       "decks": "{count, plural, one {deck} other {decks}}",
       "owned": "cartas que tenho",
-      "pending": "cartas pendentes",
+      "pending": "cartas que faltam",
       "complete": "completo no geral"
     },
     "tile": {
-      "missing": "faltam {percent}%",
       "complete": "completo",
-      "cards": "{count, plural, one {# carta} other {# cartas}}",
-      "pending": "{count, plural, one {# pendente} other {# pendentes}}",
       "allSet": "tudo certo",
-      "colors": "Cores: {colors}"
+      "colors": "Cores: {colors}",
+      "label": "{name}: {owned} de {total} cartas"
     },
     "newDeck": {
       "title": "+ Novo deck",
@@ -104,10 +103,16 @@
     },
     "shopping": {
       "title": "Lista de compras",
-      "count": "{count, plural, one {# carta pendente} other {# cartas pendentes}} em todos os decks",
+      "count": "{count, plural, one {# carta diferente} other {# cartas diferentes}} para comprar",
       "note": "Cartas que aparecem em mais de um deck vêm primeiro.",
+      "copy": "Copiar lista",
+      "copied": "Lista copiada. Cole na loja ou no Moxfield.",
+      "copyFailed": "Não consegui copiar. Permita o acesso à área de transferência no navegador e tente de novo.",
+      "store": "Buscar {name} na LigaMagic",
+      "basics": "Terrenos básicos",
       "showAll": "Ver todas ({count})",
-      "showLess": "Mostrar menos"
+      "showLess": "Mostrar menos",
+      "jump": "Ver lista de compras ({count})"
     }
   }
 }

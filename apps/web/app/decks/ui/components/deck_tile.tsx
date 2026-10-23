@@ -24,7 +24,6 @@ function manaSymbol(letter: string) {
 
 export function DeckTile({ deck }: { deck: DeckOverview }) {
   const { t } = useTranslation()
-  const percentMissing = deck.total ? Math.round((1 - deck.owned / deck.total) * 100) : 0
   const complete = deck.pending === 0
   // "" is a colourless deck; null means we never learned its colours.
   const colors = deck.colors === null ? null : [...(deck.colors || 'C')]
@@ -33,6 +32,11 @@ export function DeckTile({ deck }: { deck: DeckOverview }) {
     <Link
       href={urlFor('decks.show', { id: deck.id })}
       viewTransition
+      aria-label={t('decks.overview.tile.label', {
+        name: deck.name,
+        owned: deck.owned,
+        total: deck.total,
+      })}
       className="group flex flex-col overflow-hidden rounded-xl border border-line bg-card shadow-md transition-[transform,box-shadow] duration-150 ease-out hover:-translate-y-[3px] hover:shadow-lg motion-reduce:transition-none"
     >
       <div className="relative aspect-[16/10] border-b border-line bg-background">
@@ -45,16 +49,11 @@ export function DeckTile({ deck }: { deck: DeckOverview }) {
             className="absolute inset-0 size-full object-cover object-[center_25%]"
           />
         )}
-        <span
-          className={cn(
-            'absolute right-2.5 bottom-2.5 rounded-xl border border-line px-2 py-1 text-xs font-bold',
-            complete ? 'bg-amber text-on-amber' : 'bg-red text-on-red'
-          )}
-        >
-          {complete
-            ? t('decks.overview.tile.complete')
-            : t('decks.overview.tile.missing', { percent: percentMissing })}
-        </span>
+        {complete && (
+          <span className="absolute right-2.5 bottom-2.5 rounded-xl bg-amber px-2 py-1 text-xs font-bold text-on-amber">
+            {t('decks.overview.tile.complete')}
+          </span>
+        )}
       </div>
 
       {colors && (
@@ -82,13 +81,11 @@ export function DeckTile({ deck }: { deck: DeckOverview }) {
         <div className="flex min-w-0 flex-1 flex-col gap-1">
           {/* Shared names: the title and ring travel into the deck page. */}
           <span
+            title={deck.name}
             className="w-fit max-w-full truncate font-display text-2xl leading-none"
             style={{ viewTransitionName: `deck-title-${deck.id}` }}
           >
             {deck.name}
-          </span>
-          <span className="text-xs font-bold">
-            {t('decks.overview.tile.cards', { count: deck.total })}
           </span>
           {deck.featured && (
             <span className="truncate text-xs text-muted-foreground">{deck.featured}</span>
@@ -101,16 +98,14 @@ export function DeckTile({ deck }: { deck: DeckOverview }) {
 
       <div className="flex justify-between gap-2 border-t border-line bg-background px-3.5 py-2 text-xs font-bold">
         <span className="truncate text-muted-foreground">
-          {t('decks.hero.eyebrow', { count: deck.uniqueCards })}
+          {t('decks.progress.owned', { owned: deck.owned, total: deck.total })}
         </span>
         <span className="shrink-0">
           {complete ? (
-            <span className="text-amber-text">
-              {t('decks.overview.tile.allSet')}
-            </span>
+            <span className="text-amber-text">{t('decks.overview.tile.allSet')}</span>
           ) : (
             <span className="text-red-text">
-              {t('decks.overview.tile.pending', { count: deck.pending })}
+              {t('decks.progress.pending', { count: deck.total - deck.owned })}
             </span>
           )}
         </span>

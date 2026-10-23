@@ -2,6 +2,10 @@ import type { Category } from '#decks/enums/category'
 
 const BASIC_LANDS = new Set(['plains', 'island', 'swamp', 'mountain', 'forest', 'wastes'])
 
+export function isBasicLand(name: string): boolean {
+  return BASIC_LANDS.has(name.toLowerCase().trim())
+}
+
 // Fallback for when Scryfall is unreachable. Users can still fix any card's
 // category from the checklist.
 const KNOWN: Record<string, Category> = {

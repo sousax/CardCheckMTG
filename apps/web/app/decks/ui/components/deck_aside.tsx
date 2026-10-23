@@ -13,12 +13,11 @@ interface DeckAsideProps {
   preview: DeckCardData | null
   owned: number
   total: number
-  pending: number
 }
 
 // Sticky left column: the deck's featured card, swapped for whatever card is
 // hovered so the art is always one glance away, plus overall progress.
-export function DeckAside({ deckId, featured, preview, owned, total, pending }: DeckAsideProps) {
+export function DeckAside({ deckId, featured, preview, owned, total }: DeckAsideProps) {
   const { t } = useTranslation()
   const shown = preview ?? featured
   const percent = total === 0 ? 0 : Math.round((owned / total) * 100)
@@ -63,7 +62,7 @@ export function DeckAside({ deckId, featured, preview, owned, total, pending }: 
         <div className="flex flex-col gap-1.5 text-[13px] font-bold">
           <span>{t('decks.progress.owned', { owned, total })}</span>
           <span className="font-medium text-muted-foreground">
-            {t('decks.progress.pending', { count: pending })}
+            {t('decks.progress.pending', { count: total - owned })}
           </span>
           <span className="font-medium text-muted-foreground">
             {t('decks.progress.complete', { percent })}

@@ -73,9 +73,15 @@ test.group('Endpoint /decks', (group) => {
     )
     // Sol Ring is missing from both decks, so it leads the list.
     assert.deepEqual(props.shoppingList, [
-      { name: 'Sol Ring', scryfallId: null, quantity: 2, decks: ['Ninjas', 'Burn'] },
-      { name: 'Shock', scryfallId: null, quantity: 4, decks: ['Burn'] },
-      { name: 'Yuriko', scryfallId: null, quantity: 1, decks: ['Ninjas'] },
+      {
+        name: 'Sol Ring',
+        scryfallId: null,
+        basicLand: false,
+        quantity: 2,
+        decks: ['Ninjas', 'Burn'],
+      },
+      { name: 'Shock', scryfallId: null, basicLand: false, quantity: 4, decks: ['Burn'] },
+      { name: 'Yuriko', scryfallId: null, basicLand: false, quantity: 1, decks: ['Ninjas'] },
     ])
   })
 

@@ -74,12 +74,16 @@
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
   --color-surface-hover: var(--surface-hover);
-  /* Mana colours (vivid set from the design system), for colour identity. */
-  --color-mana-w: #fff1c2;
-  --color-mana-u: #3fb4f0;
-  --color-mana-b: #b07de0;
-  --color-mana-r: #ff5b33;
-  --color-mana-g: #3fcf73;
+  /*
+   * Mana colours for colour identity. The hues are fixed (players read them
+   * at a glance); mixing with the surface lets each palette set the chroma,
+   * so they sit muted on dark palettes and pastel on Linho instead of neon.
+   */
+  --color-mana-w: color-mix(in oklab, #fff1c2 70%, var(--surface));
+  --color-mana-u: color-mix(in oklab, #3fb4f0 62%, var(--surface));
+  --color-mana-b: color-mix(in oklab, #b07de0 62%, var(--surface));
+  --color-mana-r: color-mix(in oklab, #ff5b33 62%, var(--surface));
+  --color-mana-g: color-mix(in oklab, #3fcf73 62%, var(--surface));
   --shadow-sm: 0 2px 8px var(--shadow-color);
   --shadow-md: 0 8px 24px var(--shadow-color);
   --shadow-lg: 0 18px 44px var(--shadow-color);

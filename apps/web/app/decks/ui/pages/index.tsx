@@ -28,6 +28,7 @@ export default function DecksIndexPage({ decks, shoppingList }: PageProps) {
 
   const total = decks.reduce((sum, deck) => sum + deck.total, 0)
   const owned = decks.reduce((sum, deck) => sum + deck.owned, 0)
+  const toBuy = shoppingList.filter((item) => !item.basicLand).length
 
   return (
     <AuthenticatedLayout bandNav={<DeckTabs decks={decks} onImport={openImport} />}>
@@ -44,10 +45,7 @@ export default function DecksIndexPage({ decks, shoppingList }: PageProps) {
         </div>
       ) : (
         <div className="pt-8 pb-20">
-          <span className="text-xs font-bold tracking-[.14em] text-red-text uppercase">
-            {t('decks.overview.eyebrow')}
-          </span>
-          <h1 className="mt-2.5 mb-5.5 font-display text-[clamp(48px,7vw,76px)] leading-[.9]">
+          <h1 className="mb-5.5 font-display text-[clamp(48px,7vw,76px)] leading-[.9]">
             {t('decks.overview.title')}
           </h1>
           <StatStrip
@@ -59,12 +57,21 @@ export default function DecksIndexPage({ decks, shoppingList }: PageProps) {
               { value: owned, label: t('decks.overview.stats.owned') },
               { value: total - owned, label: t('decks.overview.stats.pending') },
               {
-                value: `${total ? Math.round((owned / total) * 100) : 0}%`,
+                // floor, like the rings: 99.6% must not read as done.
+                value: `${total ? Math.floor((owned / total) * 100) : 0}%`,
                 label: t('decks.overview.stats.complete'),
                 accent: true,
               },
             ]}
           />
+          {toBuy > 0 && (
+            <a
+              href="#compras"
+              className="mt-4 inline-flex h-10 items-center rounded-md border border-edge px-3.5 text-[13px] font-semibold sm:hidden"
+            >
+              {t('decks.overview.shopping.jump', { count: toBuy })}
+            </a>
+          )}
 
           <div className="mt-10 grid grid-cols-[repeat(auto-fill,minmax(230px,1fr))] gap-6">
             {decks.map((deck) => (
@@ -73,7 +80,7 @@ export default function DecksIndexPage({ decks, shoppingList }: PageProps) {
             <button
               type="button"
               onClick={openImport}
-              className="flex min-h-[300px] flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-edge transition-colors duration-150 hover:bg-surface-hover"
+              className="flex min-h-24 flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-edge transition-colors duration-150 hover:bg-surface-hover sm:min-h-[300px]"
             >
               <span className="font-display text-[28px] text-red-text">
                 {t('decks.overview.newDeck.title')}

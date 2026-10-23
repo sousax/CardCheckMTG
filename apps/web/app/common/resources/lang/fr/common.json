@@ -8,7 +8,8 @@
     "navUser": {
       "settings": "Paramètres",
       "adminPanel": "Panneau admin",
-      "logout": "Se déconnecter"
+      "logout": "Se déconnecter",
+      "menu": "Menu du compte"
     },
     "palette": "Palette de couleurs",
     "paletteDefault": "par défaut",
@@ -18,7 +19,8 @@
       "floresta": "Forêt arcane",
       "linho": "Lin (clair)"
     },
-    "switchLanguage": "Changer de langue"
+    "switchLanguage": "Changer de langue",
+    "skipToContent": "Aller au contenu"
   },
   "table": {
     "filters": {

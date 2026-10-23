@@ -14,7 +14,7 @@ export function StatStrip({ items }: StatStripProps) {
           key={item.label}
           className={cn(
             'flex flex-[1_0_auto] flex-col gap-1 px-5 py-3',
-            item.accent ? 'bg-red-tint text-red-text' : 'bg-card'
+            item.accent ? 'bg-amber-tint text-amber-text' : 'bg-card'
           )}
         >
           <b className="text-[30px] leading-none font-bold">{item.value}</b>

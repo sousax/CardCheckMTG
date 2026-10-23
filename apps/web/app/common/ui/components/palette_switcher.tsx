@@ -41,7 +41,11 @@ function Swatches({ colors, size }: { colors: readonly string[]; size: string })
       {colors.map((color, i) => (
         <span
           key={color}
-          className={cn('rounded-full border border-[rgba(128,128,128,.35)]', size, i && '-ml-[3px]')}
+          className={cn(
+            'rounded-full border border-[rgba(128,128,128,.35)]',
+            size,
+            i && '-ml-[3px]'
+          )}
           style={{ background: color }}
         />
       ))}
@@ -73,7 +77,10 @@ export function PaletteSwitcher() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="h-8 gap-2 border-line px-2.5 text-xs text-muted-foreground in-[.band]:border-current in-[.band]:text-on-red in-[.band]:hover:bg-black/10">
+        <Button
+          variant="outline"
+          className="h-8 gap-2 border-line px-2.5 text-xs text-muted-foreground in-[.band]:border-current in-[.band]:text-on-red in-[.band]:hover:bg-black/10"
+        >
           <Swatches colors={current.swatches.slice(1)} size="size-2.5" />
           <span className="hidden sm:inline">{t(`common.layout.palettes.${palette}`)}</span>
           <span className="sr-only sm:hidden">{t('common.layout.palette')}</span>

@@ -8,7 +8,8 @@
     "navUser": {
       "settings": "Settings",
       "adminPanel": "Admin panel",
-      "logout": "Log out"
+      "logout": "Log out",
+      "menu": "Account menu"
     },
     "palette": "Color palette",
     "paletteDefault": "default",
@@ -18,7 +19,8 @@
       "floresta": "Arcane forest",
       "linho": "Linen (light)"
     },
-    "switchLanguage": "Switch language"
+    "switchLanguage": "Switch language",
+    "skipToContent": "Skip to content"
   },
   "table": {
     "filters": {

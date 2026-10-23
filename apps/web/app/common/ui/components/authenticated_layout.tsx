@@ -50,6 +50,12 @@ export default function AuthenticatedLayout({
   return (
     <>
       <Toaster />
+      <a
+        href="#main"
+        className="sr-only z-50 rounded-md bg-red px-3 py-2 text-sm font-semibold text-on-red focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+      >
+        {t('common.layout.skipToContent')}
+      </a>
       <div className="min-h-svh flex flex-col">
         <header className="shrink-0 border-b border-line bg-background">
           <div className="mx-auto flex min-h-[72px] flex-wrap items-center gap-x-8 gap-y-2 px-4 py-3 max-w-[1360px] sm:px-10">
@@ -84,7 +90,11 @@ export default function AuthenticatedLayout({
           </div>
         )}
 
-        <main className="mx-auto flex w-full max-w-[1360px] flex-1 flex-col gap-4 px-4 sm:px-10">
+        <main
+          id="main"
+          tabIndex={-1}
+          className="mx-auto flex w-full max-w-[1360px] outline-none flex-1 flex-col gap-4 px-4 sm:px-10"
+        >
           {children}
         </main>
       </div>

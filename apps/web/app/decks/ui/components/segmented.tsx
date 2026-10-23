@@ -19,7 +19,9 @@ export function Segmented<T extends string>({
   return (
     <div
       className={cn(
-        chips ? 'flex flex-wrap gap-1.5' : 'inline-flex gap-0.5 rounded-md border border-line bg-card p-[3px]'
+        chips
+          ? 'flex flex-wrap gap-1.5'
+          : 'inline-flex gap-0.5 rounded-md border border-line bg-card p-[3px]'
       )}
       role="group"
     >

@@ -1,7 +1,9 @@
 import type React from 'react'
+import { useEffect, useRef } from 'react'
 import { useForm } from '@inertiajs/react'
 
 import { Button } from '@workspace/ui/components/button'
+import { Field, FieldLabel } from '@workspace/ui/components/field'
 import {
   Dialog,
   DialogClose,
@@ -29,6 +31,12 @@ export function ImportDialog({ open, onOpenChange }: ImportDialogProps) {
     decklist: '',
     name: '',
   })
+  // Opened from several buttons via state, not a DialogTrigger, so Radix has
+  // no trigger to hand focus back to; remember whoever opened it.
+  const opener = useRef<HTMLElement | null>(null)
+  useEffect(() => {
+    if (open) opener.current = document.activeElement as HTMLElement | null
+  }, [open])
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -50,7 +58,14 @@ export function ImportDialog({ open, onOpenChange }: ImportDialogProps) {
         if (!state) clearErrors()
       }}
     >
-      <DialogContent className="gap-3 p-5.5 sm:max-w-[520px]">
+      <DialogContent
+        className="gap-3 p-5.5 sm:max-w-[520px]"
+        onCloseAutoFocus={(e) => {
+          if (!opener.current?.isConnected) return
+          e.preventDefault()
+          opener.current.focus()
+        }}
+      >
         <DialogHeader className="text-left">
           <DialogTitle className="font-display text-[28px] leading-none font-normal">
             {t('decks.import.title')}
@@ -58,25 +73,33 @@ export function ImportDialog({ open, onOpenChange }: ImportDialogProps) {
           <DialogDescription className="sr-only">{t('decks.import.hint')}</DialogDescription>
         </DialogHeader>
         <form id="import-form" onSubmit={handleSubmit} className="flex flex-col gap-3">
-          <Textarea
-            name="decklist"
-            value={data.decklist}
-            onChange={(e) => setData('decklist', e.target.value)}
-            placeholder={t('decks.import.placeholder')}
-            aria-invalid={!!errors.decklist}
-            disabled={processing}
-            autoFocus
-            className="field-sizing-fixed min-h-[200px] resize-y bg-card p-3 font-mono text-[12.5px] leading-normal"
-          />
-          <Input
-            name="name"
-            value={data.name}
-            onChange={(e) => setData('name', e.target.value)}
-            placeholder={t('decks.import.namePlaceholder')}
-            aria-invalid={!!errors.name}
-            disabled={processing}
-            className="bg-card"
-          />
+          <Field>
+            <FieldLabel htmlFor="import-decklist">{t('decks.import.listLabel')}</FieldLabel>
+            <Textarea
+              id="import-decklist"
+              name="decklist"
+              value={data.decklist}
+              onChange={(e) => setData('decklist', e.target.value)}
+              placeholder={t('decks.import.placeholder')}
+              aria-invalid={!!errors.decklist}
+              disabled={processing}
+              autoFocus
+              className="field-sizing-fixed min-h-[200px] resize-y bg-card p-3 font-mono text-[12.5px] leading-normal"
+            />
+          </Field>
+          <Field>
+            <FieldLabel htmlFor="import-name">{t('decks.import.nameLabel')}</FieldLabel>
+            <Input
+              id="import-name"
+              name="name"
+              value={data.name}
+              onChange={(e) => setData('name', e.target.value)}
+              placeholder={t('decks.import.namePlaceholder')}
+              aria-invalid={!!errors.name}
+              disabled={processing}
+              className="bg-card"
+            />
+          </Field>
           {(errors.decklist || errors.name) && (
             <FormAlert message={errors.decklist ?? errors.name} />
           )}

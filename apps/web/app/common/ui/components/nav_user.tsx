@@ -3,6 +3,7 @@ import { Link } from '@inertiajs/react'
 
 import { UserAvatar } from '#common/ui/components/user_avatar'
 import useCan from '#common/ui/hooks/use_can'
+import { useTranslation } from '#common/ui/hooks/use_translation'
 import type { NavUserProps } from '#common/ui/types/navigation'
 
 import {
@@ -17,6 +18,7 @@ import {
 
 export function NavUser({ user, options }: NavUserProps) {
   const can = useCan()
+  const { t } = useTranslation()
   const visibleGroups = options
     .map((group) => group.filter((option) => !option.can || can[option.can]))
     .filter((group) => group.length > 0)
@@ -24,9 +26,9 @@ export function NavUser({ user, options }: NavUserProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <div>
+        <button type="button" aria-label={t('common.layout.navUser.menu')} className="rounded-full">
           <UserAvatar className="cursor-pointer" user={user} />
-        </div>
+        </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" side="bottom" align="end">
         <DropdownMenuLabel className="p-0 font-normal">

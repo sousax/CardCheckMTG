@@ -1,10 +1,12 @@
 import type Deck from '#decks/models/deck'
+import { isBasicLand } from '#decks/services/card_categories'
 
 // A type alias, not an interface: Inertia props must be JSON-shaped, and
 // interfaces don't satisfy its index-signature constraint.
 export type ShoppingItem = {
   name: string
   scryfallId: string | null
+  basicLand: boolean
   quantity: number
   decks: string[]
 }
@@ -24,6 +26,7 @@ export default class GetShoppingList {
         const item = needed.get(key) ?? {
           name: card.name,
           scryfallId: card.scryfallId,
+          basicLand: isBasicLand(card.name),
           quantity: 0,
           decks: [],
         }

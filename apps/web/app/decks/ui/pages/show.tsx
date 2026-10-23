@@ -82,7 +82,6 @@ export default function DeckShowPage({ decks, deck }: PageProps) {
   const featured = cards.find((card) => card.category === 'commander') ?? cards[0]
   const total = sumQuantity(cards)
   const owned = sumQuantity(cards.filter((card) => card.owned))
-  const pending = cards.filter((card) => !card.owned).length
 
   const typeStats = CATEGORIES.map((category) => {
     const ofType = cards.filter((card) => card.category === category)
@@ -119,7 +118,6 @@ export default function DeckShowPage({ decks, deck }: PageProps) {
           preview={preview}
           owned={owned}
           total={total}
-          pending={pending}
         />
 
         <div className="min-w-0">

@@ -55,8 +55,10 @@
   },
   "import": {
     "title": "Import list",
+    "listLabel": "Decklist",
     "placeholder": "4 Lightning Bolt\n1 Sol Ring\n23 Island\n...\n\n(accepts \"4x Name\", set codes in parentheses, etc — I ignore the rest)",
-    "namePlaceholder": "deck name (optional)",
+    "nameLabel": "Deck name (optional)",
+    "namePlaceholder": "e.g. Lathril Elves",
     "cancel": "Cancel",
     "submit": "Import and fetch cards",
     "submitting": "Fetching cards…",
@@ -73,7 +75,7 @@
     "preview": "Preview"
   },
   "ring": {
-    "missing": "missing",
+    "owned": "owned",
     "complete": "Complete"
   },
   "progress": {
@@ -82,7 +84,6 @@
     "complete": "{percent}% complete"
   },
   "overview": {
-    "eyebrow": "Overview",
     "title": "My decks",
     "stats": {
       "decks": "{count, plural, one {deck} other {decks}}",
@@ -91,12 +92,10 @@
       "complete": "complete overall"
     },
     "tile": {
-      "missing": "{percent}% missing",
       "complete": "complete",
-      "cards": "{count, plural, one {# card} other {# cards}}",
-      "pending": "{count, plural, one {# missing} other {# missing}}",
       "allSet": "all set",
-      "colors": "Colors: {colors}"
+      "colors": "Colors: {colors}",
+      "label": "{name}: {owned} of {total} cards"
     },
     "newDeck": {
       "title": "+ New deck",
@@ -104,10 +103,16 @@
     },
     "shopping": {
       "title": "Shopping list",
-      "count": "{count, plural, one {# card missing} other {# cards missing}} across all decks",
+      "count": "{count, plural, one {# different card} other {# different cards}} to buy",
       "note": "Cards needed by more than one deck come first.",
+      "copy": "Copy list",
+      "copied": "List copied. Paste it into a store or Moxfield.",
+      "copyFailed": "Couldn't copy. Allow clipboard access in your browser and try again.",
+      "store": "Search {name} on LigaMagic",
+      "basics": "Basic lands",
       "showAll": "Show all ({count})",
-      "showLess": "Show less"
+      "showLess": "Show less",
+      "jump": "See shopping list ({count})"
     }
   }
 }

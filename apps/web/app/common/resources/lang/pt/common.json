@@ -8,7 +8,8 @@
     "navUser": {
       "settings": "Configurações",
       "adminPanel": "Painel admin",
-      "logout": "Sair"
+      "logout": "Sair",
+      "menu": "Menu da conta"
     },
     "palette": "Paleta de cores",
     "paletteDefault": "padrão",
@@ -18,7 +19,8 @@
       "floresta": "Floresta arcana",
       "linho": "Linho (claro)"
     },
-    "switchLanguage": "Trocar idioma"
+    "switchLanguage": "Trocar idioma",
+    "skipToContent": "Pular para o conteúdo"
   },
   "table": {
     "filters": {

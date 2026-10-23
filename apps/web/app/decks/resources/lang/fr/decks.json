@@ -55,8 +55,10 @@
   },
   "import": {
     "title": "Importer une liste",
+    "listLabel": "Decklist",
     "placeholder": "4 Lightning Bolt\n1 Sol Ring\n23 Island\n...\n\n(accepte « 4x Nom », les codes d’extension entre parenthèses, etc — j’ignore le reste)",
-    "namePlaceholder": "nom du deck (facultatif)",
+    "nameLabel": "Nom du deck (facultatif)",
+    "namePlaceholder": "ex. : Elfes de Lathril",
     "cancel": "Annuler",
     "submit": "Importer et chercher les cartes",
     "submitting": "Recherche des cartes…",
@@ -73,7 +75,7 @@
     "preview": "Aperçu"
   },
   "ring": {
-    "missing": "manquent",
+    "owned": "à moi",
     "complete": "Complet"
   },
   "progress": {
@@ -82,7 +84,6 @@
     "complete": "{percent} % complet"
   },
   "overview": {
-    "eyebrow": "Vue d’ensemble",
     "title": "Mes decks",
     "stats": {
       "decks": "{count, plural, one {deck} other {decks}}",
@@ -91,12 +92,10 @@
       "complete": "complet au total"
     },
     "tile": {
-      "missing": "{percent} % manquant",
       "complete": "complet",
-      "cards": "{count, plural, one {# carte} other {# cartes}}",
-      "pending": "{count, plural, one {# manquante} other {# manquantes}}",
       "allSet": "tout est là",
-      "colors": "Couleurs : {colors}"
+      "colors": "Couleurs : {colors}",
+      "label": "{name} : {owned} sur {total} cartes"
     },
     "newDeck": {
       "title": "+ Nouveau deck",
@@ -104,10 +103,16 @@
     },
     "shopping": {
       "title": "Liste d’achats",
-      "count": "{count, plural, one {# carte manquante} other {# cartes manquantes}} dans tous les decks",
+      "count": "{count, plural, one {# carte différente} other {# cartes différentes}} à acheter",
       "note": "Les cartes utilisées par plusieurs decks viennent en premier.",
+      "copy": "Copier la liste",
+      "copied": "Liste copiée. Collez-la dans une boutique ou sur Moxfield.",
+      "copyFailed": "Copie impossible. Autorisez l’accès au presse-papiers dans le navigateur et réessayez.",
+      "store": "Chercher {name} sur LigaMagic",
+      "basics": "Terrains de base",
       "showAll": "Tout afficher ({count})",
-      "showLess": "Afficher moins"
+      "showLess": "Afficher moins",
+      "jump": "Voir la liste d'achats ({count})"
     }
   }
 }

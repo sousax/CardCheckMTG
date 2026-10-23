@@ -7,12 +7,12 @@ interface CompletionRingProps {
   stroke?: number
 }
 
-// The owned colour fills over an accent-tint track as cards are marked; the
-// centre states what is still missing, which is the number a buyer cares about.
+// The owned colour fills over an accent-tint track as cards are marked, and the
+// centre states the same number the fill shows: how much of the deck you have.
 export function CompletionRing({ owned, total, size = 120, stroke = 13 }: CompletionRingProps) {
   const { t } = useTranslation()
   const pct = total ? owned / total : 0
-  const missing = Math.round((1 - pct) * 100)
+  const ownedPercent = Math.floor(pct * 100)
   const r = (size - stroke) / 2 - 2
   const circumference = 2 * Math.PI * r
   const c = size / 2
@@ -41,7 +41,7 @@ export function CompletionRing({ owned, total, size = 120, stroke = 13 }: Comple
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-0.5">
-        {missing === 0 ? (
+        {total > 0 && owned >= total ? (
           <span
             className="font-display leading-none text-amber-text"
             style={{ fontSize: size * 0.2 }}
@@ -51,7 +51,7 @@ export function CompletionRing({ owned, total, size = 120, stroke = 13 }: Comple
         ) : (
           <>
             <span className="leading-none font-bold" style={{ fontSize: size * 0.26 }}>
-              {missing}%
+              {ownedPercent}%
             </span>
             {/* The label doesn't fit inside small rings; there the % stands alone. */}
             {size >= 80 && (
@@ -59,7 +59,7 @@ export function CompletionRing({ owned, total, size = 120, stroke = 13 }: Comple
                 className="font-semibold text-muted-foreground"
                 style={{ fontSize: Math.max(10, size * 0.085) }}
               >
-                {t('decks.ring.missing')}
+                {t('decks.ring.owned')}
               </span>
             )}
           </>

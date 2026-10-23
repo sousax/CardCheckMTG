@@ -33,11 +33,16 @@ export function CardRow({ card, onToggle, onCategoryChange, onPreview }: CardRow
         aria-hidden
         className="relative hidden size-[34px] shrink-0 overflow-hidden rounded-sm bg-surface-2 sm:block"
       >
+        {/* Shows through when Scryfall has no art for the card. */}
+        <span className="absolute inset-0 flex items-center justify-center font-display text-lg text-muted-foreground">
+          {card.name[0]}
+        </span>
         <img
           src={scryfallImage(card.name, 'art_crop', card.scryfallId)}
           alt=""
           loading="lazy"
           decoding="async"
+          onError={(e) => (e.currentTarget.hidden = true)}
           className="absolute top-[22%] left-1/2 w-[240%] max-w-none -translate-x-1/2 -translate-y-[22%]"
         />
       </div>
