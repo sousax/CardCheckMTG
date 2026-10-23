@@ -14,6 +14,8 @@ const dbConfig = defineConfig({
         user: env.get('DB_USER'),
         password: env.get('DB_PASSWORD'),
         database: env.get('DB_DATABASE'),
+        // Supabase's cert is signed by its own CA, absent from Node's trust store; traffic is still encrypted.
+        ssl: env.get('DB_SSL') ? { rejectUnauthorized: false } : false,
       },
       migrations: {
         naturalSort: true,

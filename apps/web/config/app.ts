@@ -18,6 +18,8 @@ export const appKey = env.get('APP_KEY')
  */
 export const appUrl = env.get('APP_URL')
 
+export const gaMeasurementId = env.get('GA_MEASUREMENT_ID')
+
 /**
  * The configuration settings used by the HTTP server
  */

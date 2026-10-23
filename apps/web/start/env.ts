@@ -21,6 +21,7 @@ export default await Env.create(new URL('../', import.meta.url), {
   LOG_LEVEL: Env.schema.string(),
 
   VITE_API_URL: Env.schema.string(),
+  GA_MEASUREMENT_ID: Env.schema.string.optional(),
 
   /*
   |----------------------------------------------------------
@@ -39,6 +40,7 @@ export default await Env.create(new URL('../', import.meta.url), {
   DB_USER: Env.schema.string(),
   DB_PASSWORD: Env.schema.string.optional(),
   DB_DATABASE: Env.schema.string(),
+  DB_SSL: Env.schema.boolean.optional(),
 
   /*
   |----------------------------------------------------------
