@@ -23,6 +23,7 @@
     }
   },
   "categories": {
+    "commander": "Commander",
     "creatures": "Creatures",
     "planeswalkers": "Planeswalkers",
     "artifacts": "Artifacts",

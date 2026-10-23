@@ -20,6 +20,7 @@ declare module '@adonisjs/inertia/types' {
     'core/errors/server_error': ExtractProps<(typeof import('../../app/core/ui/pages/errors/server_error.tsx'))['default']>
     'decks/index': ExtractProps<(typeof import('../../app/decks/ui/pages/index.tsx'))['default']>
     'decks/show': ExtractProps<(typeof import('../../app/decks/ui/pages/show.tsx'))['default']>
+    'marketing/index': ExtractProps<(typeof import('../../app/marketing/ui/pages/index.tsx'))['default']>
     'users/create': ExtractProps<(typeof import('../../app/users/ui/pages/create.tsx'))['default']>
     'users/edit': ExtractProps<(typeof import('../../app/users/ui/pages/edit.tsx'))['default']>
     'users/index': ExtractProps<(typeof import('../../app/users/ui/pages/index.tsx'))['default']>

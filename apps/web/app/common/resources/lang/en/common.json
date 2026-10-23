@@ -10,7 +10,14 @@
       "adminPanel": "Admin panel",
       "logout": "Log out"
     },
-    "toggleTheme": "Toggle theme",
+    "palette": "Color palette",
+    "paletteDefault": "default",
+    "palettes": {
+      "brasa": "Soft ember",
+      "noite": "Night & gold",
+      "floresta": "Arcane forest",
+      "linho": "Linen (light)"
+    },
     "switchLanguage": "Switch language"
   },
   "table": {

@@ -5,6 +5,7 @@ const COLLECTION_URL = 'https://api.scryfall.com/cards/collection'
 const BATCH_SIZE = 75
 
 interface ScryfallCard {
+  id: string
   name: string
   type_line?: string
   color_identity?: string[]
@@ -21,6 +22,8 @@ export interface CardLookup {
   typeLines: Map<string, string>
   /** Lowercased requested name → color identity in WUBRG order ("" = colorless). */
   colors: Map<string, string>
+  /** Lowercased requested name → Scryfall card id, used to build CDN image URLs. */
+  ids: Map<string, string>
   /** Lowercased names Scryfall did not recognize. */
   notFound: Set<string>
 }
@@ -38,7 +41,12 @@ export default class Scryfall {
    * reached so callers can fall back instead of failing the import.
    */
   async lookup(names: string[]): Promise<CardLookup | null> {
-    const result: CardLookup = { typeLines: new Map(), colors: new Map(), notFound: new Set() }
+    const result: CardLookup = {
+      typeLines: new Map(),
+      colors: new Map(),
+      ids: new Map(),
+      notFound: new Set(),
+    }
 
     try {
       for (let i = 0; i < names.length; i += BATCH_SIZE) {
@@ -63,6 +71,7 @@ export default class Scryfall {
           for (const name of front ? [card.name, front.name] : [card.name]) {
             result.typeLines.set(name.toLowerCase(), typeLine)
             result.colors.set(name.toLowerCase(), colors)
+            result.ids.set(name.toLowerCase(), card.id)
           }
         }
         for (const missing of body.not_found) {

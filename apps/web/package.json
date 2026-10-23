@@ -25,6 +25,7 @@
     "#users/*": "./app/users/*.js",
     "#notifications/*": "./app/notifications/*.js",
     "#decks/*": "./app/decks/*.js",
+    "#marketing/*": "./app/marketing/*.js",
     "#providers/*": "./providers/*.js",
     "#tests/*": "./tests/*.js",
     "#generated/*": "./.adonisjs/server/*.js"

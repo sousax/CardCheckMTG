@@ -13,8 +13,8 @@ export function AuthModeToggle({ mode }: { mode: 'signin' | 'signup' }) {
   ] as const
 
   return (
-    <div className="flex">
-      {options.map((option, i) => {
+    <div className="inline-flex gap-0.5 self-start rounded-md border border-line bg-card p-[3px]">
+      {options.map((option) => {
         const on = option.mode === mode
         return (
           <Link
@@ -22,9 +22,8 @@ export function AuthModeToggle({ mode }: { mode: 'signin' | 'signup' }) {
             route={option.route}
             aria-current={on ? 'page' : undefined}
             className={cn(
-              'border-2 border-edge px-3.5 py-2 text-[13px] font-bold outline-none focus-visible:shadow-hard-sm',
-              i > 0 && 'border-l-0',
-              on ? 'bg-foreground text-background' : 'bg-card'
+              'rounded-sm px-3.5 py-[7px] text-[13px] font-semibold outline-none transition-colors duration-150',
+              on ? 'bg-surface-2 text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'
             )}
           >
             {option.label}

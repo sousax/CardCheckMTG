@@ -57,7 +57,7 @@ app/<module>/
 
 ### Dependency direction
 
-Feature modules (`auth`, `users`, `decks`, `notifications`) depend only on `common`, `core`, and themselves. The sanctioned exceptions are `auth → users` — auth is behavior over the identity aggregate that `users` owns — and `decks → users`, since every deck belongs to a user. `core` and `common` may import `User`: that's the assumed cost of typed shared props. Don't introduce a new feature→feature dependency without adding it here first.
+Feature modules (`auth`, `users`, `decks`, `notifications`) depend only on `common`, `core`, and themselves. The sanctioned exceptions are `auth → users` — auth is behavior over the identity aggregate that `users` owns — and `decks → users`, since every deck belongs to a user, and `marketing → decks` (UI components only), so the landing page demos the real checklist instead of a copy. `core` and `common` may import `User`: that's the assumed cost of typed shared props. Don't introduce a new feature→feature dependency without adding it here first.
 
 ### Naming is wiring
 

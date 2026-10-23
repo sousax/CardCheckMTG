@@ -379,18 +379,6 @@ export interface Registry {
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#app/notifications/controllers/notifications_controller').default['markAllRead']>>>
     }
   }
-  'home': {
-    methods: ["GET","HEAD"]
-    pattern: '/'
-    types: {
-      body: {}
-      paramsTuple: []
-      params: {}
-      query: {}
-      response: unknown
-      errorResponse: unknown
-    }
-  }
   'decks.index': {
     methods: ["GET","HEAD"]
     pattern: '/decks'
@@ -449,6 +437,18 @@ export interface Registry {
       query: ExtractQuery<InferInput<(typeof import('#decks/validators/deck_cards').updateDeckCardValidator)>>
       response: ExtractResponse<Awaited<ReturnType<import('#app/decks/controllers/deck_cards_controller').default['update']>>>
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#app/decks/controllers/deck_cards_controller').default['update']>>> | { status: 422; response: { errors: SimpleError[] } }
+    }
+  }
+  'home': {
+    methods: ["GET","HEAD"]
+    pattern: '/'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#app/marketing/controllers/marketing_controller').default['index']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#app/marketing/controllers/marketing_controller').default['index']>>>
     }
   }
 }

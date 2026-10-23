@@ -22,6 +22,17 @@ test.group('parseDecklist', () => {
     assert.deepEqual(parseDecklist(text), [{ name: 'Shock', quantity: 3 }])
   })
 
+  test('marca as cartas da secao Commander', ({ assert }) => {
+    assert.deepEqual(parseDecklist('Commander\n1 Yuriko\n\nDeck\n1 Sol Ring'), [
+      { name: 'Yuriko', quantity: 1, commander: true },
+      { name: 'Sol Ring', quantity: 1 },
+    ])
+    assert.deepEqual(parseDecklist('Commander\n1 Yuriko\n\n1 Sol Ring'), [
+      { name: 'Yuriko', quantity: 1, commander: true },
+      { name: 'Sol Ring', quantity: 1 },
+    ])
+  })
+
   test('usa a face da frente de cartas dupla-face', ({ assert }) => {
     assert.deepEqual(parseDecklist('1 Fire // Ice'), [{ name: 'Fire', quantity: 1 }])
   })

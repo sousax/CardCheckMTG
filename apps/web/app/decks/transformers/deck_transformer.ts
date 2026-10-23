@@ -20,11 +20,13 @@ export default class DeckTransformer extends BaseTransformer<Deck> {
     const cards = this.resource.cards
     const sum = (list: DeckCard[]) => list.reduce((total, card) => total + card.quantity, 0)
     const known = cards.filter((card) => card.colorIdentity !== null)
+    // The commander is the deck's face; without one, the first decklist entry.
+    const featured = cards.find((card) => card.category === 'commander') ?? cards[0]
 
     return {
       ...this.toObject(),
-      // First decklist entry is the deck's face (the commander, in Commander).
-      featured: cards[0]?.name ?? null,
+      featured: featured?.name ?? null,
+      featuredScryfallId: featured?.scryfallId ?? null,
       uniqueCards: cards.length,
       total: sum(cards),
       owned: sum(cards.filter((card) => card.owned)),
@@ -44,6 +46,7 @@ export default class DeckTransformer extends BaseTransformer<Deck> {
         owned: card.owned,
         category: card.category,
         notFound: card.notFound,
+        scryfallId: card.scryfallId,
       })),
     }
   }

@@ -10,7 +10,7 @@ import { NavHeaderMobile } from '#common/ui/components/nav_header_mobile'
 import { NavUser } from '#common/ui/components/nav_user'
 import { LanguageSwitcher } from '#common/ui/components/language_switcher'
 import { NotificationBell } from '#common/ui/components/notification_bell'
-import { ToggleTheme } from '#common/ui/components/toggle_theme'
+import { PaletteSwitcher } from '#common/ui/components/palette_switcher'
 
 import useUser from '#auth/ui/hooks/use_user'
 import useFlashToasts from '#common/ui/hooks/use_flash_toasts'
@@ -51,7 +51,7 @@ export default function AuthenticatedLayout({
     <>
       <Toaster />
       <div className="min-h-svh flex flex-col">
-        <header className="band bg-red text-cream border-b-[3px] border-edge shrink-0">
+        <header className="shrink-0 border-b border-line bg-background">
           <div className="mx-auto flex min-h-[72px] flex-wrap items-center gap-x-8 gap-y-2 px-4 py-3 max-w-[1360px] sm:px-10">
             <NavHeaderMobile items={navMain} />
 
@@ -69,7 +69,7 @@ export default function AuthenticatedLayout({
 
             <div className="ml-auto flex items-center gap-1">
               <NotificationBell />
-              <ToggleTheme />
+              <PaletteSwitcher />
               <LanguageSwitcher />
               <NavUser user={user} options={navUser} />
             </div>
@@ -77,7 +77,7 @@ export default function AuthenticatedLayout({
         </header>
 
         {breadcrumbs.length > 0 && (
-          <div className="border-b-2 border-edge/20 shrink-0">
+          <div className="border-b border-line shrink-0">
             <div className="mx-auto flex h-12 w-full items-center px-4 max-w-[1360px] sm:px-10">
               <Breadcrumb breadcrumbs={breadcrumbs} />
             </div>

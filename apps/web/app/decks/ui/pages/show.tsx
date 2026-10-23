@@ -78,8 +78,8 @@ export default function DeckShowPage({ decks, deck }: PageProps) {
 
   const toggle = (card: DeckCardData) => updateCard(card, { owned: !card.owned })
 
-  // The decklist's first entry is the deck's face (the commander, in Commander).
-  const featured = cards[0]
+  // The commander is the deck's face; without one, the first decklist entry.
+  const featured = cards.find((card) => card.category === 'commander') ?? cards[0]
   const total = sumQuantity(cards)
   const owned = sumQuantity(cards.filter((card) => card.owned))
   const pending = cards.filter((card) => !card.owned).length
@@ -134,7 +134,7 @@ export default function DeckShowPage({ decks, deck }: PageProps) {
           </h1>
           {typeStats.length > 0 && <StatStrip items={typeStats} />}
 
-          <div className="mt-7.5 mb-6 flex flex-wrap items-center gap-2.5 border-b-2 border-edge pb-4.5">
+          <div className="mt-7.5 mb-6 flex flex-wrap items-center gap-2.5 border-b border-line pb-4.5">
             <Input
               type="search"
               value={query}

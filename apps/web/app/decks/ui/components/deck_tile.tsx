@@ -33,20 +33,22 @@ export function DeckTile({ deck }: { deck: DeckOverview }) {
     <Link
       href={urlFor('decks.show', { id: deck.id })}
       viewTransition
-      className="group flex flex-col border-[3px] border-edge bg-card shadow-hard-md transition-[transform,box-shadow] duration-[120ms] ease-out hover:-translate-x-[3px] hover:-translate-y-[3px] hover:shadow-hard-hover motion-reduce:transition-none"
+      className="group flex flex-col overflow-hidden rounded-xl border border-line bg-card shadow-md transition-[transform,box-shadow] duration-150 ease-out hover:-translate-y-[3px] hover:shadow-lg motion-reduce:transition-none"
     >
-      <div
-        className="relative aspect-[16/10] border-b-[3px] border-edge bg-background bg-cover bg-[center_25%]"
-        style={
-          deck.featured
-            ? { backgroundImage: `url("${scryfallImage(deck.featured, 'art_crop')}")` }
-            : undefined
-        }
-      >
+      <div className="relative aspect-[16/10] border-b border-line bg-background">
+        {deck.featured && (
+          <img
+            src={scryfallImage(deck.featured, 'art_crop', deck.featuredScryfallId)}
+            alt=""
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 size-full object-cover object-[center_25%]"
+          />
+        )}
         <span
           className={cn(
-            'absolute -right-[3px] -bottom-[3px] border-[3px] border-edge px-2 py-1 text-xs font-bold',
-            complete ? 'bg-amber text-ember' : 'bg-red-strong text-cream'
+            'absolute right-2.5 bottom-2.5 rounded-xl border border-line px-2 py-1 text-xs font-bold',
+            complete ? 'bg-amber text-on-amber' : 'bg-red text-on-red'
           )}
         >
           {complete
@@ -57,7 +59,7 @@ export function DeckTile({ deck }: { deck: DeckOverview }) {
 
       {colors && (
         <div
-          className="flex border-b-2 border-edge"
+          className="flex border-b border-line"
           role="img"
           aria-label={t('decks.overview.tile.colors', { colors: colors.join(' ') })}
         >
@@ -67,7 +69,7 @@ export function DeckTile({ deck }: { deck: DeckOverview }) {
               className={cn(
                 'flex h-6 flex-1 items-center justify-center',
                 MANA_BG[letter],
-                i > 0 && 'border-l-2 border-edge'
+                i > 0 && 'border-l border-line'
               )}
             >
               <img src={manaSymbol(letter)} alt="" className="size-[15px]" />
@@ -97,13 +99,13 @@ export function DeckTile({ deck }: { deck: DeckOverview }) {
         </div>
       </div>
 
-      <div className="flex justify-between gap-2 border-t-2 border-edge bg-background px-3.5 py-2 text-xs font-bold">
+      <div className="flex justify-between gap-2 border-t border-line bg-background px-3.5 py-2 text-xs font-bold">
         <span className="truncate text-muted-foreground">
           {t('decks.hero.eyebrow', { count: deck.uniqueCards })}
         </span>
         <span className="shrink-0">
           {complete ? (
-            <span className="text-foreground dark:text-amber">
+            <span className="text-amber-text">
               {t('decks.overview.tile.allSet')}
             </span>
           ) : (

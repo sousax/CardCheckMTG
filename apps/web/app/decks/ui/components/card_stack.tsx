@@ -22,8 +22,8 @@ function StackStatus({ owned }: { owned: boolean }) {
     <span
       ref={ref}
       className={cn(
-        'border-2 border-edge px-1.5 py-[3px] text-[10px] font-bold tracking-[.1em] uppercase',
-        owned ? 'bg-amber text-ember' : 'bg-card text-muted-foreground'
+        'rounded-xs px-1.5 py-[3px] text-[10px] font-bold tracking-[.1em] uppercase',
+        owned ? 'bg-amber text-on-amber' : 'bg-card text-muted-foreground'
       )}
     >
       {owned ? t('decks.status.owned') : t('decks.status.missing')}
@@ -47,9 +47,9 @@ export function CardStack({ title, cards, onToggle, onPreview }: CardStackProps)
 
   return (
     <section className="min-w-0">
-      <div className="mb-2.5 flex items-baseline justify-between gap-2 border-b-2 border-edge pb-2">
+      <div className="mb-2.5 flex items-baseline justify-between gap-2 border-b border-line pb-2">
         <h2 className="font-display text-2xl leading-none">{title}</h2>
-        <span className="text-xs font-bold text-muted-foreground">
+        <span className="text-xs font-semibold text-muted-foreground">
           {owned} / {total}
         </span>
       </div>
@@ -80,20 +80,26 @@ export function CardStack({ title, cards, onToggle, onPreview }: CardStackProps)
             >
               <div
                 className={cn(
-                  'relative aspect-[5/7] border-2 border-edge bg-card bg-cover bg-center',
-                  raised && 'shadow-hard-row'
+                  'relative aspect-[5/7] overflow-hidden rounded-[10px] bg-surface-2',
+                  raised ? 'shadow-md' : 'shadow-[0_-1px_4px_var(--shadow-color)]'
                 )}
-                style={{ backgroundImage: `url("${scryfallImage(card.name)}")` }}
               >
+                <img
+                  src={scryfallImage(card.name, 'normal', card.scryfallId)}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 size-full object-cover"
+                />
                 <div
                   className={cn(
-                    'absolute inset-0 bg-ember/35 transition-opacity duration-[120ms]',
+                    'absolute inset-0 bg-black/40 transition-opacity duration-150',
                     card.owned ? 'opacity-100' : 'opacity-0'
                   )}
                 />
                 <div className="absolute top-1.5 right-1.5 flex gap-1">
                   {card.quantity > 1 && (
-                    <span className="border-2 border-edge bg-red-strong px-1.5 py-0.5 text-[11px] font-bold text-cream">
+                    <span className="rounded-xs bg-red px-1.5 py-0.5 text-[11px] font-bold text-on-red">
                       ×{card.quantity}
                     </span>
                   )}

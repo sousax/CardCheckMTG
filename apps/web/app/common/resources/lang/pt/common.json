@@ -10,7 +10,14 @@
       "adminPanel": "Painel admin",
       "logout": "Sair"
     },
-    "toggleTheme": "Alternar tema",
+    "palette": "Paleta de cores",
+    "paletteDefault": "padrão",
+    "palettes": {
+      "brasa": "Brasa suave",
+      "noite": "Noite & ouro",
+      "floresta": "Floresta arcana",
+      "linho": "Linho (claro)"
+    },
     "switchLanguage": "Trocar idioma"
   },
   "table": {

@@ -192,12 +192,6 @@ const routes = {
     tokens: [{"old":"/notifications/read","type":0,"val":"notifications","end":""},{"old":"/notifications/read","type":0,"val":"read","end":""}],
     types: placeholder as Registry['notifications.markAllRead']['types'],
   },
-  'home': {
-    methods: ["GET","HEAD"],
-    pattern: '/',
-    tokens: [{"old":"/","type":0,"val":"/","end":""}],
-    types: placeholder as Registry['home']['types'],
-  },
   'decks.index': {
     methods: ["GET","HEAD"],
     pattern: '/decks',
@@ -227,6 +221,12 @@ const routes = {
     pattern: '/decks/:deck_id/cards/:id',
     tokens: [{"old":"/decks/:deck_id/cards/:id","type":0,"val":"decks","end":""},{"old":"/decks/:deck_id/cards/:id","type":1,"val":"deck_id","end":""},{"old":"/decks/:deck_id/cards/:id","type":0,"val":"cards","end":""},{"old":"/decks/:deck_id/cards/:id","type":1,"val":"id","end":""}],
     types: placeholder as Registry['decks.cards.update']['types'],
+  },
+  'home': {
+    methods: ["GET","HEAD"],
+    pattern: '/',
+    tokens: [{"old":"/","type":0,"val":"/","end":""}],
+    types: placeholder as Registry['home']['types'],
   },
 } as const satisfies Record<string, AdonisEndpoint>
 

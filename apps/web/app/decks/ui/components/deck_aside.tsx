@@ -28,17 +28,17 @@ export function DeckAside({ deckId, featured, preview, owned, total, pending }: 
       <div>
         <span
           className={cn(
-            'mb-2.5 inline-block border-2 px-2 py-1 text-xs font-bold tracking-[.14em] uppercase',
-            preview ? 'border-edge bg-card' : 'border-amber bg-amber text-ember'
+            'mb-2.5 inline-block rounded-sm border px-2 py-1 text-xs font-bold tracking-[.14em] uppercase',
+            preview ? 'border-line bg-card' : 'border-amber bg-amber text-on-amber'
           )}
         >
           {preview ? t('decks.aside.preview') : t('decks.aside.featured')}
         </span>
-        <div className="aspect-[5/7] border-[3px] border-edge bg-card shadow-hard-lg">
+        <div className="aspect-[5/7] overflow-hidden rounded-xl border border-line bg-card shadow-lg">
           {shown && (
             <img
               key={shown.name}
-              src={scryfallImage(shown.name)}
+              src={scryfallImage(shown.name, 'normal', shown.scryfallId)}
               alt={shown.name}
               className="block size-full animate-preview-in object-cover"
             />
@@ -56,7 +56,7 @@ export function DeckAside({ deckId, featured, preview, owned, total, pending }: 
         )}
       </div>
 
-      <div className="flex items-center gap-4.5 border-[3px] border-edge bg-card p-4 shadow-hard-md max-[640px]:flex-col max-[640px]:items-start max-[640px]:gap-3 max-[640px]:p-3">
+      <div className="flex items-center gap-4.5 rounded-xl border border-line bg-card p-4 shadow-md max-[640px]:flex-col max-[640px]:items-start max-[640px]:gap-3 max-[640px]:p-3">
         <div style={{ viewTransitionName: `deck-ring-${deckId}` }}>
           <CompletionRing owned={owned} total={total} />
         </div>

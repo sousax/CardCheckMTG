@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "title": "Checklist de decks Magic : découvrez ce qui manque à votre deck"
+  },
+  "nav": {
+    "how": "Comment ça marche",
+    "features": "Fonctionnalités",
+    "signin": "Se connecter"
+  },
+  "hero": {
+    "eyebrow": "Checklist de decks Magic",
+    "title": "Découvrez ce qui manque à votre deck",
+    "body": "Collez la liste, cochez ce que vous avez, n'achetez que ce qui manque. Les images des cartes viennent de Scryfall et vos decks restent enregistrés."
+  },
+  "cta": {
+    "start": "Commencer",
+    "features": "Voir les fonctionnalités",
+    "signup": "Créer un compte gratuit",
+    "signin": "J'ai déjà un compte"
+  },
+  "steps": {
+    "title": "Comment ça marche",
+    "paste": {
+      "title": "Collez la liste",
+      "body": "Accepte « 4 Lightning Bolt », « 4x Nom », le code d'extension entre parenthèses. Le reste est ignoré."
+    },
+    "check": {
+      "title": "Cochez ce que vous avez",
+      "body": "Un clic par carte. Survolez pour vérifier l'image avant de cocher."
+    },
+    "buy": {
+      "title": "N'achetez que ce qui manque",
+      "body": "L'anneau montre ce qui manque et la liste des cartes à acheter est prête."
+    }
+  },
+  "features": {
+    "views": {
+      "tag": "Liste ou grille",
+      "title": "Comme vous préférez",
+      "body": "Passez de lignes compactes à une grille de grandes cartes. Essayez de cocher les cartes juste à côté.",
+      "count": "{owned} sur {total} cartes"
+    },
+    "progress": {
+      "tag": "Progression",
+      "title": "Ce qui manque, d'un coup d'œil",
+      "body": "Chaque deck affiche un anneau avec le pourcentage restant pour le compléter. Il suit ce que vous cochez plus haut.",
+      "owned": "à moi",
+      "pending": "à acheter"
+    },
+    "decks": {
+      "tag": "Plusieurs decks",
+      "title": "Tous vos decks au même endroit",
+      "body": "La page Mes decks réunit tout : l'illustration du commandant, les couleurs, ce qui manque à chacun et une seule liste d'achats pour tous."
+    }
+  },
+  "final": {
+    "title": "N'achetez plus de cartes en double"
+  },
+  "footer": {
+    "disclaimer": "Images et données des cartes via Scryfall. Magic: The Gathering et ses illustrations sont © Wizards of the Coast. Projet de fan, sans affiliation."
+  }
+}

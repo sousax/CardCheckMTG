@@ -16,6 +16,9 @@ export const controllers = {
     DeckCards: () => import('#app/decks/controllers/deck_cards_controller'),
     Decks: () => import('#app/decks/controllers/decks_controller'),
   },
+  marketing: {
+    Marketing: () => import('#app/marketing/controllers/marketing_controller'),
+  },
   notifications: {
     Notifications: () => import('#app/notifications/controllers/notifications_controller'),
   },

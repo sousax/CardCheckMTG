@@ -35,12 +35,12 @@ export type ScannedRoutes = {
     'notifications.markRead': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'notifications.markAllSeen': { paramsTuple?: []; params?: {} }
     'notifications.markAllRead': { paramsTuple?: []; params?: {} }
-    'home': { paramsTuple?: []; params?: {} }
     'decks.index': { paramsTuple?: []; params?: {} }
     'decks.store': { paramsTuple?: []; params?: {} }
     'decks.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'decks.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'decks.cards.update': { paramsTuple: [ParamValue,ParamValue]; params: {'deck_id': ParamValue,'id': ParamValue} }
+    'home': { paramsTuple?: []; params?: {} }
   }
   GET: {
     'drive.fs.serve': { paramsTuple: [...ParamValue[]]; params: {'*': ParamValue[]} }
@@ -56,9 +56,9 @@ export type ScannedRoutes = {
     'users.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'settings.index': { paramsTuple?: []; params?: {} }
     'notifications.index': { paramsTuple?: []; params?: {} }
-    'home': { paramsTuple?: []; params?: {} }
     'decks.index': { paramsTuple?: []; params?: {} }
     'decks.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'home': { paramsTuple?: []; params?: {} }
   }
   HEAD: {
     'drive.fs.serve': { paramsTuple: [...ParamValue[]]; params: {'*': ParamValue[]} }
@@ -74,9 +74,9 @@ export type ScannedRoutes = {
     'users.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'settings.index': { paramsTuple?: []; params?: {} }
     'notifications.index': { paramsTuple?: []; params?: {} }
-    'home': { paramsTuple?: []; params?: {} }
     'decks.index': { paramsTuple?: []; params?: {} }
     'decks.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'home': { paramsTuple?: []; params?: {} }
   }
   POST: {
     'auth.sign_in.handle': { paramsTuple?: []; params?: {} }

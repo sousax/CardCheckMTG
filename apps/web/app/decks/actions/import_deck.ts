@@ -31,9 +31,14 @@ export default class ImportDeck {
             name: entry.name,
             quantity: entry.quantity,
             owned: false,
-            category: typeLine ? categoryFromTypeLine(typeLine) : categoryFromName(entry.name),
+            category: entry.commander
+              ? 'commander'
+              : typeLine
+                ? categoryFromTypeLine(typeLine)
+                : categoryFromName(entry.name),
             notFound: lookup?.notFound.has(key) ?? false,
             colorIdentity: lookup?.colors.get(key) ?? null,
+            scryfallId: lookup?.ids.get(key) ?? null,
           }
         })
       )

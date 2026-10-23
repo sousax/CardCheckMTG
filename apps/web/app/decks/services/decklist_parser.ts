@@ -1,6 +1,8 @@
 export interface DecklistEntry {
   name: string
   quantity: number
+  /** Listed under a "Commander" header (Arena/Moxfield exports). */
+  commander?: true
 }
 
 const SECTION_HEADER = /^(deck|sideboard|maybeboard|commander)s?:?$/i
@@ -15,12 +17,19 @@ const FOIL_SUFFIX = /\s*\*F\*\s*$/i
  */
 export function parseDecklist(text: string): DecklistEntry[] {
   const merged = new Map<string, DecklistEntry>()
+  let inCommander = false
 
   for (const raw of text.split('\n')) {
     const line = raw.trim()
-    if (!line || SECTION_HEADER.test(line) || line.startsWith('//') || line.startsWith('#')) {
+    const header = line.match(SECTION_HEADER)
+    if (header) {
+      inCommander = header[1].toLowerCase() === 'commander'
       continue
     }
+    // A blank line ends the commander block, so a deck pasted below it without
+    // a "Deck" header isn't swallowed into it.
+    if (!line) inCommander = false
+    if (!line || line.startsWith('//') || line.startsWith('#')) continue
 
     const match = line.match(LINE)
     if (!match) continue
@@ -34,7 +43,7 @@ export function parseDecklist(text: string): DecklistEntry[] {
     const key = name.toLowerCase()
     const existing = merged.get(key)
     if (existing) existing.quantity += quantity
-    else merged.set(key, { name, quantity })
+    else merged.set(key, inCommander ? { name, quantity, commander: true } : { name, quantity })
   }
 
   return [...merged.values()]

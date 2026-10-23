@@ -20,8 +20,8 @@ export function StatusPill({ owned, missingLabel = false, className }: StatusPil
     <span
       ref={ref}
       className={cn(
-        'text-center text-[11px] font-bold tracking-[.1em] uppercase',
-        owned ? 'bg-amber text-ember' : 'bg-red-strong text-cream',
+        'rounded-sm text-center text-[11px] font-bold tracking-[.1em] uppercase',
+        owned ? 'bg-amber-tint text-amber-text' : 'bg-red-tint text-red-text',
         className
       )}
     >

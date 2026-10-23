@@ -17,11 +17,11 @@ interface DeckTabsProps {
   onImport: () => void
 }
 
-// Lives on the red band. Inactive tabs keep an ink tint so 13px cream text
-// clears AA on the brand red; the active one is a cream "card".
-const tab = 'inline-flex items-center gap-2 border-2 text-[13px] font-bold whitespace-nowrap'
-const ACTIVE = 'border-ember bg-cream text-ember shadow-[3px_3px_0_var(--ember)]'
-const INACTIVE = 'border-transparent bg-ember/20 hover:bg-ember/35'
+const tab =
+  'inline-flex items-center gap-2 rounded-md border text-[13px] font-semibold whitespace-nowrap transition-colors duration-150'
+const ACTIVE = 'border-edge bg-surface-2 text-foreground'
+const INACTIVE =
+  'border-transparent text-muted-foreground hover:bg-surface-hover hover:text-foreground'
 
 export function DeckTabs({ decks, activeId, onImport }: DeckTabsProps) {
   const { t } = useTranslation()
@@ -33,7 +33,7 @@ export function DeckTabs({ decks, activeId, onImport }: DeckTabsProps) {
         href={urlFor('decks.index')}
         viewTransition
         aria-current={activeId === undefined ? 'page' : undefined}
-        className={cn(tab, 'px-3 py-1.5', activeId === undefined ? ACTIVE : INACTIVE)}
+        className={cn(tab, 'px-3.5 py-2', activeId === undefined ? ACTIVE : INACTIVE)}
       >
         {t('decks.tabs.overview')}
       </Link>
@@ -46,7 +46,7 @@ export function DeckTabs({ decks, activeId, onImport }: DeckTabsProps) {
               viewTransition
               preserveScroll
               aria-current={active ? 'page' : undefined}
-              className="py-1.5 pl-3 outline-none"
+              className="py-2 pl-3.5 outline-none"
             >
               {deck.name}
             </Link>
@@ -54,7 +54,7 @@ export function DeckTabs({ decks, activeId, onImport }: DeckTabsProps) {
               type="button"
               onClick={() => setRemoving(deck)}
               aria-label={t('decks.tabs.remove', { name: deck.name })}
-              className="py-1.5 pr-2.5 opacity-55 outline-none hover:opacity-100 focus-visible:opacity-100"
+              className="py-2 pr-2.5 opacity-55 outline-none hover:opacity-100 focus-visible:opacity-100"
             >
               <X className="size-3.5" strokeWidth={2.5} />
             </button>
@@ -66,7 +66,7 @@ export function DeckTabs({ decks, activeId, onImport }: DeckTabsProps) {
         onClick={onImport}
         className={cn(
           tab,
-          'border-dashed border-cream/70 bg-ember/20 px-3 py-1.5 hover:border-cream hover:bg-ember/35'
+          'border-dashed border-edge px-3.5 py-2 text-red-text hover:bg-red-tint'
         )}
       >
         {t('decks.tabs.import')}

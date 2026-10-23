@@ -33,7 +33,7 @@ export class AuthAccessTokenSchema extends BaseModel {
 }
 
 export class DeckCardSchema extends BaseModel {
-  static $columns = ['category', 'colorIdentity', 'createdAt', 'deckId', 'id', 'name', 'notFound', 'owned', 'quantity', 'updatedAt'] as const
+  static $columns = ['category', 'colorIdentity', 'createdAt', 'deckId', 'id', 'name', 'notFound', 'owned', 'quantity', 'scryfallId', 'updatedAt'] as const
   $columns = DeckCardSchema.$columns
   @column()
   declare category: string
@@ -53,6 +53,8 @@ export class DeckCardSchema extends BaseModel {
   declare owned: boolean
   @column()
   declare quantity: number
+  @column()
+  declare scryfallId: string | null
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
 }

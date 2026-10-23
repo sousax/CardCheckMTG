@@ -23,6 +23,7 @@ test.group('ImportDeck', (group) => {
         ['lightning bolt', 'R'],
         ['monastery swiftspear', 'R'],
       ]),
+      ids: new Map([['lightning bolt', '77c6fa74-5543-42ac-9ead-0e890b188e99']]),
       notFound: new Set(['carta inventada']),
     })
 
@@ -41,6 +42,31 @@ test.group('ImportDeck', (group) => {
         ['Lightning Bolt', 4, 'instants', false, false, 'R'],
         ['Monastery Swiftspear', 4, 'creatures', false, false, 'R'],
         ['Carta Inventada', 1, 'other', true, false, null],
+      ]
+    )
+    assert.deepEqual(
+      deck.cards.map((c) => c.scryfallId),
+      ['77c6fa74-5543-42ac-9ead-0e890b188e99', null, null]
+    )
+  })
+
+  test('cartas da secao Commander entram na categoria commander', async ({ assert }) => {
+    const owner = await UserFactory.create()
+    const scryfall = new Scryfall()
+    sinon.stub(scryfall, 'lookup').resolves(null)
+
+    const deck = await new ImportDeck(scryfall).handle({
+      owner,
+      name: 'Ninjas',
+      decklist: "Commander\n1 Yuriko, the Tiger's Shadow\n\nDeck\n10 Island",
+    })
+
+    await deck.load('cards', (q) => q.orderBy('id'))
+    assert.deepEqual(
+      deck.cards.map((c) => [c.name, c.category]),
+      [
+        ["Yuriko, the Tiger's Shadow", 'commander'],
+        ['Island', 'lands'],
       ]
     )
   })

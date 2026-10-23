@@ -22,7 +22,7 @@ export function CardRow({ card, onToggle, onCategoryChange, onPreview }: CardRow
     <div
       onMouseEnter={onPreview}
       onFocus={onPreview}
-      className="flex items-center gap-2.5 border-2 border-edge bg-card py-2 pr-3.5 pl-2 text-base font-bold transition-[transform,box-shadow] duration-[120ms] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-row sm:gap-4"
+      className="flex items-center gap-2.5 rounded-lg border border-line bg-card py-2 pr-3.5 pl-2 text-base font-semibold transition-colors duration-150 hover:border-edge hover:bg-surface-hover sm:gap-3"
     >
       <RowCheck
         checked={card.owned}
@@ -31,10 +31,17 @@ export function CardRow({ card, onToggle, onCategoryChange, onPreview }: CardRow
       />
       <div
         aria-hidden
-        className="hidden size-9 shrink-0 border-2 border-edge bg-background bg-[length:240%] bg-[center_22%] bg-no-repeat sm:block"
-        style={{ backgroundImage: `url("${scryfallImage(card.name, 'art_crop')}")` }}
-      />
-      <div className="w-8 shrink-0 text-lg text-red-text sm:w-11">×{card.quantity}</div>
+        className="relative hidden size-[34px] shrink-0 overflow-hidden rounded-sm bg-surface-2 sm:block"
+      >
+        <img
+          src={scryfallImage(card.name, 'art_crop', card.scryfallId)}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          className="absolute top-[22%] left-1/2 w-[240%] max-w-none -translate-x-1/2 -translate-y-[22%]"
+        />
+      </div>
+      <div className="w-8 shrink-0 font-bold text-red-text sm:w-11">×{card.quantity}</div>
       <div
         className={cn(
           'min-w-0 flex-1 truncate',
@@ -49,7 +56,7 @@ export function CardRow({ card, onToggle, onCategoryChange, onPreview }: CardRow
         onChange={(e) => onCategoryChange(e.target.value as Category)}
         title={t('decks.card.fixCategory')}
         aria-label={t('decks.card.fixCategory')}
-        className="hidden w-36 shrink-0 cursor-pointer appearance-none border-2 border-transparent bg-transparent px-1.5 py-1 text-xs font-medium tracking-[.06em] text-muted-foreground uppercase outline-none hover:border-edge focus-visible:border-edge md:block"
+        className="hidden w-36 shrink-0 cursor-pointer appearance-none rounded-sm border border-transparent bg-transparent px-1.5 py-1 text-xs font-medium tracking-[.06em] text-muted-foreground uppercase outline-none hover:border-edge focus-visible:border-edge md:block"
       >
         {CATEGORIES.map((category) => (
           <option key={category} value={category} className="bg-card text-foreground">

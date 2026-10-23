@@ -17,19 +17,6 @@ test.group('Endpoint /decks', (group) => {
   })
   group.each.teardown(() => sinon.restore())
 
-  test('GET / sem auth vai direto para o login', async ({ client, assert }) => {
-    const response = await client.get('/').redirects(0)
-    response.assertStatus(302)
-    assert.equal(response.header('location'), '/login')
-  })
-
-  test('GET / autenticado vai para /decks', async ({ client, assert }) => {
-    const user = await UserFactory.create()
-    const response = await client.get('/').loginAs(user).redirects(0)
-    response.assertStatus(302)
-    assert.equal(response.header('location'), '/decks')
-  })
-
   test('GET /decks sem auth redireciona para login', async ({ client, assert }) => {
     const response = await client.get('/decks').redirects(0)
     response.assertStatus(302)
@@ -86,9 +73,9 @@ test.group('Endpoint /decks', (group) => {
     )
     // Sol Ring is missing from both decks, so it leads the list.
     assert.deepEqual(props.shoppingList, [
-      { name: 'Sol Ring', quantity: 2, decks: ['Ninjas', 'Burn'] },
-      { name: 'Shock', quantity: 4, decks: ['Burn'] },
-      { name: 'Yuriko', quantity: 1, decks: ['Ninjas'] },
+      { name: 'Sol Ring', scryfallId: null, quantity: 2, decks: ['Ninjas', 'Burn'] },
+      { name: 'Shock', scryfallId: null, quantity: 4, decks: ['Burn'] },
+      { name: 'Yuriko', scryfallId: null, quantity: 1, decks: ['Ninjas'] },
     ])
   })
 
@@ -127,6 +114,7 @@ test.group('Endpoint /decks', (group) => {
     sinon.stub(Scryfall.prototype, 'lookup').resolves({
       typeLines: new Map([['lightning bolt', 'Instant']]),
       colors: new Map([['lightning bolt', 'R']]),
+      ids: new Map(),
       notFound: new Set(),
     })
     const user = await UserFactory.create()

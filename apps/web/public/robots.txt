@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /decks
+Disallow: /settings
+Disallow: /users
+Disallow: /notifications
+
+Sitemap: https://mtgcardlist.com.br/sitemap.xml

@@ -32,6 +32,10 @@ export default class DeckCard extends BaseModel {
   @column()
   declare colorIdentity: string | null
 
+  /** Null when Scryfall wasn't reachable; the UI falls back to the name lookup. */
+  @column()
+  declare scryfallId: string | null
+
   @belongsTo(() => Deck)
   declare deck: BelongsTo<typeof Deck>
 }

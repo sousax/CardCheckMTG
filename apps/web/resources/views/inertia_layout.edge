@@ -14,6 +14,9 @@
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#ef4444">
 
+    {{-- Card art is served from Scryfall's CDN; open the connection before the first <img>. --}}
+    <link rel="preconnect" href="https://cards.scryfall.io">
+
     <meta name="description" content="Cole sua decklist de Magic: The Gathering, marque as cartas que você já tem e veja o que falta comprar." />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="MTG CardList" />
@@ -23,15 +26,26 @@
       MTG CardList
     </title>
 
-    {{-- Apply the saved theme before first paint so SSR pages don't flash light. --}}
+    {{-- Apply the saved palette before first paint so SSR pages don't flash the default one. --}}
     <script>
       (function () {
-        var theme = 'dark'
-        try { theme = localStorage.getItem('vite-ui-theme') || 'dark' } catch (e) {}
-        if (theme === 'system') theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-        document.documentElement.classList.add(theme)
+        var palette = 'brasa'
+        try { palette = localStorage.getItem('cardlist-palette') || 'brasa' } catch (e) {}
+        document.documentElement.dataset.palette = palette
+        document.documentElement.classList.add(palette === 'linho' ? 'light' : 'dark')
       })()
     </script>
+
+    {{-- GA4 enhanced measurement tracks Inertia's pushState navigations on its own. --}}
+    @if(app.inProduction && config('app.gaMeasurementId'))
+      <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('app.gaMeasurementId') }}"></script>
+      <script>
+        window.dataLayer = window.dataLayer || []
+        function gtag() { dataLayer.push(arguments) }
+        gtag('js', new Date())
+        gtag('config', '{{ config('app.gaMeasurementId') }}')
+      </script>
+    @end
 
     @stack('dumper')
     @viteReactRefresh()

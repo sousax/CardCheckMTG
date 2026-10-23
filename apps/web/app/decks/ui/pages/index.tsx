@@ -73,7 +73,7 @@ export default function DecksIndexPage({ decks, shoppingList }: PageProps) {
             <button
               type="button"
               onClick={openImport}
-              className="flex min-h-[300px] flex-col items-center justify-center gap-2 border-[3px] border-dashed border-edge transition-colors duration-[120ms] hover:bg-card"
+              className="flex min-h-[300px] flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-edge transition-colors duration-150 hover:bg-surface-hover"
             >
               <span className="font-display text-[28px] text-red-text">
                 {t('decks.overview.newDeck.title')}

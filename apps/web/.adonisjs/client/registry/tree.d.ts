@@ -69,7 +69,6 @@ export interface ApiDefinition {
     markAllSeen: typeof routes['notifications.markAllSeen']
     markAllRead: typeof routes['notifications.markAllRead']
   }
-  home: typeof routes['home']
   decks: {
     index: typeof routes['decks.index']
     store: typeof routes['decks.store']
@@ -79,4 +78,5 @@ export interface ApiDefinition {
       update: typeof routes['decks.cards.update']
     }
   }
+  home: typeof routes['home']
 }

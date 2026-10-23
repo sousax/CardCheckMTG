@@ -7,10 +7,14 @@ import { client } from './client'
 import { I18nextProvider } from 'react-i18next'
 import { setupI18n } from '../config/i18n.config'
 
+const appName = import.meta.env.VITE_APP_NAME || 'MTG CardList'
+
 export default function render(page: any) {
   return createInertiaApp({
     page,
     render: ReactDOMServer.renderToString,
+    // Must match app.tsx, or crawlers see a different <title> than browsers.
+    title: (title) => (title ? `${title} - ${appName}` : appName),
     resolve: (name) => {
       const firstPart = name.split('/')[0]
       const rest = name.split('/').slice(1).join('/')

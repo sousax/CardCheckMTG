@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "title": "Checklist de decks de Magic: saiba o que falta no seu deck"
+  },
+  "nav": {
+    "how": "Como funciona",
+    "features": "Recursos",
+    "signin": "Entrar"
+  },
+  "hero": {
+    "eyebrow": "Checklist de decks de Magic",
+    "title": "Saiba o que falta no seu deck",
+    "body": "Cole a lista, marque o que já tem, compre só o que falta. As imagens das cartas vêm da Scryfall e seus decks ficam salvos."
+  },
+  "cta": {
+    "start": "Começar agora",
+    "features": "Ver os recursos",
+    "signup": "Criar conta grátis",
+    "signin": "Já tenho conta"
+  },
+  "steps": {
+    "title": "Como funciona",
+    "paste": {
+      "title": "Cole a lista",
+      "body": "Aceita \"4 Lightning Bolt\", \"4x Nome\", código de set entre parênteses. O resto é ignorado."
+    },
+    "check": {
+      "title": "Marque o que tem",
+      "body": "Um clique por carta. Passe o mouse para conferir a imagem antes de marcar."
+    },
+    "buy": {
+      "title": "Compre só o que falta",
+      "body": "O círculo mostra quanto falta e a lista de pendentes já sai pronta."
+    }
+  },
+  "features": {
+    "views": {
+      "tag": "Lista ou grade",
+      "title": "Do jeito que você prefere ver",
+      "body": "Alterne entre linhas compactas e uma grade com as cartas grandes. Experimente marcar as cartas aqui do lado.",
+      "count": "{owned} de {total} cartas"
+    },
+    "progress": {
+      "tag": "Progresso",
+      "title": "Quanto falta, num relance",
+      "body": "Cada deck mostra um círculo com a porcentagem que falta para completar. Ele acompanha o que você marca acima.",
+      "owned": "tenho",
+      "pending": "pendentes"
+    },
+    "decks": {
+      "tag": "Vários decks",
+      "title": "Todos os seus decks num lugar só",
+      "body": "A página Meus decks junta tudo: arte do commander, cores, quanto falta em cada um e uma lista de compras única para todos."
+    }
+  },
+  "final": {
+    "title": "Pare de comprar carta repetida"
+  },
+  "footer": {
+    "disclaimer": "Imagens e dados das cartas via Scryfall. Magic: The Gathering e as artes são © Wizards of the Coast. Projeto de fã, sem afiliação."
+  }
+}

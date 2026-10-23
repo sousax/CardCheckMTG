@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "title": "Magic deck checklist: find out what your deck is missing"
+  },
+  "nav": {
+    "how": "How it works",
+    "features": "Features",
+    "signin": "Sign in"
+  },
+  "hero": {
+    "eyebrow": "Magic deck checklist",
+    "title": "Find out what your deck is missing",
+    "body": "Paste the list, check what you own, buy only what's missing. Card images come from Scryfall and your decks stay saved."
+  },
+  "cta": {
+    "start": "Get started",
+    "features": "See the features",
+    "signup": "Create a free account",
+    "signin": "I have an account"
+  },
+  "steps": {
+    "title": "How it works",
+    "paste": {
+      "title": "Paste the list",
+      "body": "Takes \"4 Lightning Bolt\", \"4x Name\", set code in parentheses. Everything else is ignored."
+    },
+    "check": {
+      "title": "Check what you own",
+      "body": "One click per card. Hover to check the image before marking it."
+    },
+    "buy": {
+      "title": "Buy only what's missing",
+      "body": "The ring shows how much is missing and the pending list is ready to go."
+    }
+  },
+  "features": {
+    "views": {
+      "tag": "List or grid",
+      "title": "See it the way you like",
+      "body": "Switch between compact rows and a grid of large cards. Try checking the cards right here.",
+      "count": "{owned} of {total} cards"
+    },
+    "progress": {
+      "tag": "Progress",
+      "title": "What's missing, at a glance",
+      "body": "Every deck shows a ring with the percentage left to complete it. It follows what you check above.",
+      "owned": "owned",
+      "pending": "pending"
+    },
+    "decks": {
+      "tag": "Many decks",
+      "title": "All your decks in one place",
+      "body": "The My decks page brings it all together: commander art, colors, what each one is missing and a single shopping list for all of them."
+    }
+  },
+  "final": {
+    "title": "Stop buying cards you already own"
+  },
+  "footer": {
+    "disclaimer": "Card images and data via Scryfall. Magic: The Gathering and its art are © Wizards of the Coast. Fan project, not affiliated."
+  }
+}

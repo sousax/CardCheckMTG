@@ -14,7 +14,7 @@ export function FormAlert({ message, children, className, ...props }: FormAlertP
     <div
       role="alert"
       className={cn(
-        'flex items-start gap-2 border-2 border-red-text bg-card px-2.5 py-2 text-[13px] leading-snug font-bold text-foreground',
+        'flex items-start gap-2 rounded-md border border-red-text bg-red-tint px-2.5 py-2 text-[13px] leading-snug font-semibold text-foreground',
         className
       )}
       {...props}

@@ -98,6 +98,9 @@ export default defineConfig({
 
     //decks
     () => import('#decks/routes'),
+
+    //marketing
+    () => import('#marketing/routes'),
   ],
 
   /*

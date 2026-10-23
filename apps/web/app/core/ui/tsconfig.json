@@ -22,6 +22,8 @@
     "../../common/ui/**/*.tsx",
     "../../decks/ui/**/*.ts",
     "../../decks/ui/**/*.tsx",
+    "../../marketing/ui/**/*.ts",
+    "../../marketing/ui/**/*.tsx",
     "../../../config/auth.ts",
     "../../../.adonisjs/client/**/*.ts",
     "../../../.adonisjs/server/**/*.d.ts"

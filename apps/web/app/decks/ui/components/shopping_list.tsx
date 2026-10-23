@@ -21,7 +21,7 @@ export function ShoppingList({ items }: { items: ShoppingItem[] }) {
         <h2 className="font-display text-[40px] leading-none">
           {t('decks.overview.shopping.title')}
         </h2>
-        <span className="text-[13px] font-bold text-muted-foreground">
+        <span className="text-[13px] font-semibold text-muted-foreground">
           {t('decks.overview.shopping.count', { count: items.length })}
         </span>
       </div>
@@ -31,14 +31,21 @@ export function ShoppingList({ items }: { items: ShoppingItem[] }) {
         {visible.map((item) => (
           <li
             key={item.name}
-            className="flex items-center gap-2.5 border-2 border-edge bg-card py-2 pr-3.5 pl-2 text-base font-bold sm:gap-4"
+            className="flex items-center gap-2.5 rounded-lg border border-line bg-card py-2 pr-3.5 pl-2 text-base font-semibold sm:gap-3"
           >
             <div
               aria-hidden
-              className="size-9 shrink-0 border-2 border-edge bg-background bg-[length:240%] bg-[center_22%] bg-no-repeat"
-              style={{ backgroundImage: `url("${scryfallImage(item.name, 'art_crop')}")` }}
-            />
-            <span className="w-8 shrink-0 text-lg text-red-text sm:w-11">×{item.quantity}</span>
+              className="relative size-[34px] shrink-0 overflow-hidden rounded-sm bg-surface-2"
+            >
+              <img
+                src={scryfallImage(item.name, 'art_crop', item.scryfallId)}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                className="absolute top-[22%] left-1/2 w-[240%] max-w-none -translate-x-1/2 -translate-y-[22%]"
+              />
+            </div>
+            <span className="w-8 shrink-0 font-bold text-red-text sm:w-11">×{item.quantity}</span>
             <span className="min-w-0 flex-1 truncate">{item.name}</span>
             <span className="hidden max-w-[40%] truncate text-xs font-medium tracking-[.06em] text-muted-foreground uppercase sm:block">
               {item.decks.join(' · ')}

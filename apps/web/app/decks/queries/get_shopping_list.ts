@@ -4,6 +4,7 @@ import type Deck from '#decks/models/deck'
 // interfaces don't satisfy its index-signature constraint.
 export type ShoppingItem = {
   name: string
+  scryfallId: string | null
   quantity: number
   decks: string[]
 }
@@ -20,7 +21,12 @@ export default class GetShoppingList {
       for (const card of deck.cards) {
         if (card.owned) continue
         const key = card.name.toLowerCase()
-        const item = needed.get(key) ?? { name: card.name, quantity: 0, decks: [] }
+        const item = needed.get(key) ?? {
+          name: card.name,
+          scryfallId: card.scryfallId,
+          quantity: 0,
+          decks: [],
+        }
         item.quantity += card.quantity
         item.decks.push(deck.name)
         needed.set(key, item)

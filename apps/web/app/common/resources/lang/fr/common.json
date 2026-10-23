@@ -10,7 +10,14 @@
       "adminPanel": "Panneau admin",
       "logout": "Se déconnecter"
     },
-    "toggleTheme": "Changer de thème",
+    "palette": "Palette de couleurs",
+    "paletteDefault": "par défaut",
+    "palettes": {
+      "brasa": "Braise douce",
+      "noite": "Nuit & or",
+      "floresta": "Forêt arcane",
+      "linho": "Lin (clair)"
+    },
     "switchLanguage": "Changer de langue"
   },
   "table": {

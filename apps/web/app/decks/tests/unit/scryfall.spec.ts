@@ -17,8 +17,9 @@ test.group('Scryfall', (group) => {
     sinon.stub(globalThis, 'fetch').resolves(
       jsonResponse({
         data: [
-          { name: 'Lightning Bolt', type_line: 'Instant' },
+          { id: 'bolt-id', name: 'Lightning Bolt', type_line: 'Instant' },
           {
+            id: 'delver-id',
             name: 'Delver of Secrets // Insectile Aberration',
             card_faces: [
               { name: 'Delver of Secrets', type_line: 'Creature — Human Wizard' },
@@ -38,6 +39,7 @@ test.group('Scryfall', (group) => {
 
     assert.equal(lookup!.typeLines.get('lightning bolt'), 'Instant')
     assert.equal(lookup!.typeLines.get('delver of secrets'), 'Creature — Human Wizard')
+    assert.equal(lookup!.ids.get('delver of secrets'), 'delver-id')
     assert.isTrue(lookup!.notFound.has('carta inventada'))
   })
 

@@ -19,8 +19,8 @@ export function RowCheck({ checked, label, onToggle, className }: RowCheckProps)
         onToggle()
       }}
       className={cn(
-        'flex size-6 shrink-0 cursor-pointer items-center justify-center border-2 border-edge text-ember transition-colors duration-[120ms] outline-none focus-visible:shadow-hard-sm',
-        checked ? 'bg-amber' : 'bg-background',
+        'flex size-[22px] shrink-0 cursor-pointer items-center justify-center rounded-sm border-[1.5px] text-on-amber transition-colors duration-150 outline-none',
+        checked ? 'border-amber bg-amber' : 'border-edge bg-card',
         className
       )}
     >

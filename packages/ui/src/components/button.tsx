@@ -5,20 +5,20 @@ import { Slot } from "radix-ui";
 import { cn } from "@workspace/ui/lib/utils";
 
 const buttonVariants = cva(
-  "group/button inline-flex shrink-0 items-center justify-center border-2 border-transparent bg-clip-padding text-sm font-bold whitespace-nowrap transition-[transform,box-shadow,background-color,color] duration-[120ms] outline-none select-none focus-visible:border-ring focus-visible:shadow-hard-sm disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "group/button inline-flex shrink-0 items-center justify-center rounded-md border border-transparent bg-clip-padding text-[13px] font-semibold whitespace-nowrap transition-[filter,box-shadow,background-color,color,scale] duration-150 outline-none select-none active:scale-[.98] disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground border-edge hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-sm active:translate-x-0 active:translate-y-0 active:shadow-none",
+          "bg-primary text-primary-foreground hover:shadow-glow hover:brightness-[1.07]",
         outline:
-          "bg-card text-foreground border-edge hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-sm active:translate-x-0 active:translate-y-0 active:shadow-none aria-expanded:shadow-hard-sm",
+          "bg-transparent text-foreground border-edge hover:bg-surface-hover aria-expanded:bg-surface-hover",
         secondary:
-          "bg-secondary text-secondary-foreground border-edge hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-sm active:translate-x-0 active:translate-y-0 active:shadow-none",
+          "bg-secondary text-secondary-foreground hover:brightness-[1.07]",
         ghost:
-          "hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 in-[.band]:hover:bg-ember/20 in-[.band]:hover:text-cream in-[.band]:aria-expanded:bg-ember/20 in-[.band]:aria-expanded:text-cream",
+          "hover:bg-surface-hover hover:text-foreground aria-expanded:bg-surface-hover aria-expanded:text-foreground in-[.band]:hover:bg-black/10 in-[.band]:hover:text-on-red in-[.band]:aria-expanded:bg-black/10 in-[.band]:aria-expanded:text-on-red",
         destructive:
-          "bg-red-strong text-cream border-edge hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-sm active:translate-x-0 active:translate-y-0 active:shadow-none",
+          "bg-red text-on-red hover:brightness-[1.07]",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
