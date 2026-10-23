@@ -212,7 +212,6 @@ export default function MarketingIndexPage({ turnstileSiteKey }: { turnstileSite
       <Head title={t('marketing.meta.title')}>
         <link rel="canonical" href={`${SITE_URL}/`} />
         <meta property="og:url" content={`${SITE_URL}/`} />
-        <meta property="og:image" content={`${SITE_URL}/icon-512.png`} />
       </Head>
       <Toaster />
 
