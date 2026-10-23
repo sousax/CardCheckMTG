@@ -5,7 +5,8 @@
   "nav": {
     "how": "How it works",
     "features": "Features",
-    "signin": "Sign in"
+    "signin": "Sign in",
+    "contact": "Contact"
   },
   "hero": {
     "eyebrow": "Magic deck checklist",
@@ -30,7 +31,7 @@
     },
     "buy": {
       "title": "Buy only what's missing",
-      "body": "The ring shows how much is missing and the pending list is ready to go."
+      "body": "The ring shows how much of the deck you already own and the pending list is ready to go."
     }
   },
   "features": {
@@ -43,7 +44,7 @@
     "progress": {
       "tag": "Progress",
       "title": "What's missing, at a glance",
-      "body": "Every deck shows a ring with the percentage left to complete it. It follows what you check above.",
+      "body": "Every deck shows a ring with the percentage you already own. It follows what you check above.",
       "owned": "owned",
       "pending": "pending"
     },
@@ -58,5 +59,23 @@
   },
   "footer": {
     "disclaimer": "Card images and data via Scryfall. Magic: The Gathering and its art are © Wizards of the Coast. Fan project, not affiliated."
+  },
+  "contact": {
+    "title": "Get in touch",
+    "body": "Found a bug, have a suggestion or just want to say hi? Your message goes straight to our inbox and we reply by email.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "messagePlaceholder": "Tell us what you need",
+    "submit": "Send message",
+    "submitting": "Sending…",
+    "sent": "Message sent. Thank you! We will reply to the email you gave us.",
+    "captchaFailed": "We couldn't confirm you're not a robot. Complete the check and send again.",
+    "dailyLimit": "We received a lot of messages today and paused the form. Please try again tomorrow."
+  },
+  "emails": {
+    "contact": {
+      "subject": "Website contact: {name}"
+    }
   }
 }

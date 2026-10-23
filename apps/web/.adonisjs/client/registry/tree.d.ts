@@ -79,4 +79,7 @@ export interface ApiDefinition {
     }
   }
   home: typeof routes['home']
+  contact: {
+    store: typeof routes['contact.store']
+  }
 }

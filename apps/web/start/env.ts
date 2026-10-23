@@ -49,6 +49,11 @@ export default await Env.create(new URL('../', import.meta.url), {
   */
   RESEND_API_KEY: Env.schema.string(),
   EMAIL_FROM: Env.schema.string(),
+  // Inbox for the landing page contact form; falls back to EMAIL_FROM.
+  CONTACT_EMAIL: Env.schema.string.optional(),
+  // Cloudflare Turnstile on the contact form. Dev/test use Cloudflare's always-pass test keys.
+  TURNSTILE_SITE_KEY: Env.schema.string(),
+  TURNSTILE_SECRET_KEY: Env.schema.string(),
   SMTP_HOST: Env.schema.string({ format: 'host' }),
   SMTP_PORT: Env.schema.number(),
   SMTP_USERNAME: Env.schema.string(),

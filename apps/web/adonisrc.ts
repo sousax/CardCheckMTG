@@ -100,6 +100,8 @@ export default defineConfig({
     () => import('#decks/routes'),
 
     //marketing
+    () => import('#marketing/start/view'),
+    () => import('#marketing/start/events'),
     () => import('#marketing/routes'),
   ],
 

@@ -5,7 +5,8 @@
   "nav": {
     "how": "Comment ça marche",
     "features": "Fonctionnalités",
-    "signin": "Se connecter"
+    "signin": "Se connecter",
+    "contact": "Contact"
   },
   "hero": {
     "eyebrow": "Checklist de decks Magic",
@@ -30,7 +31,7 @@
     },
     "buy": {
       "title": "N'achetez que ce qui manque",
-      "body": "L'anneau montre ce qui manque et la liste des cartes à acheter est prête."
+      "body": "L'anneau montre la part du deck que vous avez déjà et la liste des cartes à acheter est prête."
     }
   },
   "features": {
@@ -43,7 +44,7 @@
     "progress": {
       "tag": "Progression",
       "title": "Ce qui manque, d'un coup d'œil",
-      "body": "Chaque deck affiche un anneau avec le pourcentage restant pour le compléter. Il suit ce que vous cochez plus haut.",
+      "body": "Chaque deck affiche un anneau avec le pourcentage que vous avez déjà. Il suit ce que vous cochez plus haut.",
       "owned": "à moi",
       "pending": "à acheter"
     },
@@ -58,5 +59,23 @@
   },
   "footer": {
     "disclaimer": "Images et données des cartes via Scryfall. Magic: The Gathering et ses illustrations sont © Wizards of the Coast. Projet de fan, sans affiliation."
+  },
+  "contact": {
+    "title": "Nous écrire",
+    "body": "Un bug, une suggestion ou juste envie de dire bonjour ? Votre message arrive directement dans notre boîte mail et nous répondons par e-mail.",
+    "name": "Nom",
+    "email": "E-mail",
+    "message": "Message",
+    "messagePlaceholder": "Dites-nous ce dont vous avez besoin",
+    "submit": "Envoyer le message",
+    "submitting": "Envoi…",
+    "sent": "Message envoyé. Merci ! Nous répondrons à l’adresse que vous avez indiquée.",
+    "captchaFailed": "Impossible de confirmer que vous n'êtes pas un robot. Validez la vérification et renvoyez.",
+    "dailyLimit": "Nous avons reçu beaucoup de messages aujourd'hui et le formulaire est en pause. Réessayez demain."
+  },
+  "emails": {
+    "contact": {
+      "subject": "Contact via le site : {name}"
+    }
   }
 }

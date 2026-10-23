@@ -41,6 +41,7 @@ export type ScannedRoutes = {
     'decks.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'decks.cards.update': { paramsTuple: [ParamValue,ParamValue]; params: {'deck_id': ParamValue,'id': ParamValue} }
     'home': { paramsTuple?: []; params?: {} }
+    'contact.store': { paramsTuple?: []; params?: {} }
   }
   GET: {
     'drive.fs.serve': { paramsTuple: [...ParamValue[]]; params: {'*': ParamValue[]} }
@@ -93,6 +94,7 @@ export type ScannedRoutes = {
     'notifications.markAllSeen': { paramsTuple?: []; params?: {} }
     'notifications.markAllRead': { paramsTuple?: []; params?: {} }
     'decks.store': { paramsTuple?: []; params?: {} }
+    'contact.store': { paramsTuple?: []; params?: {} }
   }
   PUT: {
     'users.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }

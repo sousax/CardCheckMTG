@@ -4,11 +4,13 @@ import { Link } from '@adonisjs/inertia/react'
 import { Head } from '@inertiajs/react'
 
 import { Button } from '@workspace/ui/components/button'
+import { Toaster } from '@workspace/ui/components/sonner'
 import { cn } from '@workspace/ui/lib/utils'
 
 import { AppLogo } from '#common/ui/components/app_logo'
 import { LanguageSwitcher } from '#common/ui/components/language_switcher'
 import { PaletteSwitcher } from '#common/ui/components/palette_switcher'
+import useFlashToasts from '#common/ui/hooks/use_flash_toasts'
 import { useTranslation } from '#common/ui/hooks/use_translation'
 
 import { CardRow } from '#decks/ui/components/card_row'
@@ -18,6 +20,8 @@ import { Segmented } from '#decks/ui/components/segmented'
 import { StatStrip } from '#decks/ui/components/stat_strip'
 import { scryfallImage } from '#decks/ui/lib/scryfall'
 import type { DeckCardData } from '#decks/ui/lib/types'
+
+import { ContactForm } from '#marketing/ui/components/contact_form'
 
 const SITE_URL = 'https://mtgcardlist.com.br'
 
@@ -33,12 +37,26 @@ const demoCard = (
 // [card, rotation°, left %] — a hand of cards fanned behind the completion ring.
 const FAN: [DeckCardData, number, number][] = [
   [
-    demoCard(1, "Yuriko, the Tiger's Shadow", 'fe9be3e0-076c-4703-9750-2a6b0a178bc9', 1, false, 'creatures'),
+    demoCard(
+      1,
+      "Yuriko, the Tiger's Shadow",
+      'fe9be3e0-076c-4703-9750-2a6b0a178bc9',
+      1,
+      false,
+      'creatures'
+    ),
     -9,
     0,
   ],
   [
-    demoCard(2, 'Ninja of the Deep Hours', '5fea7980-55e1-47c1-ab18-a89c976b55fc', 1, true, 'creatures'),
+    demoCard(
+      2,
+      'Ninja of the Deep Hours',
+      '5fea7980-55e1-47c1-ab18-a89c976b55fc',
+      1,
+      true,
+      'creatures'
+    ),
     2,
     24,
   ],
@@ -184,8 +202,9 @@ function Features() {
   )
 }
 
-export default function MarketingIndexPage() {
+export default function MarketingIndexPage({ turnstileSiteKey }: { turnstileSiteKey: string }) {
   const { t } = useTranslation()
+  useFlashToasts()
 
   return (
     <>
@@ -194,6 +213,7 @@ export default function MarketingIndexPage() {
         <meta property="og:url" content={`${SITE_URL}/`} />
         <meta property="og:image" content={`${SITE_URL}/icon-512.png`} />
       </Head>
+      <Toaster />
 
       <header className="band border-b border-line bg-red text-on-red">
         <div className={cn(wrap, 'flex flex-wrap items-center gap-x-6 gap-y-3 py-3.5')}>
@@ -201,6 +221,7 @@ export default function MarketingIndexPage() {
           <nav className="hidden flex-1 justify-end gap-5.5 text-[13px] font-bold md:flex">
             <a href="#como">{t('marketing.nav.how')}</a>
             <a href="#recursos">{t('marketing.nav.features')}</a>
+            <a href="#contato">{t('marketing.nav.contact')}</a>
           </nav>
           <div className="ml-auto flex items-center gap-1 md:ml-0">
             <PaletteSwitcher />
@@ -238,7 +259,11 @@ export default function MarketingIndexPage() {
           </div>
 
           {/* Decorative: inert keeps the demo cards' checkboxes out of the tab order. */}
-          <div aria-hidden inert className="relative h-[440px] w-full max-w-[520px] justify-self-center">
+          <div
+            aria-hidden
+            inert
+            className="relative h-[440px] w-full max-w-[520px] justify-self-center"
+          >
             {FAN.map(([card, rotate, left], i) => (
               <div
                 key={card.id}
@@ -280,6 +305,23 @@ export default function MarketingIndexPage() {
 
         <Features />
 
+        <section id="contato" className="scroll-mt-4 border-t border-line">
+          <div
+            className={cn(
+              wrap,
+              'grid grid-cols-[repeat(auto-fit,minmax(min(100%,380px),1fr))] items-start gap-12 py-22'
+            )}
+          >
+            <div className="flex flex-col gap-4">
+              <h2 className={h2}>{t('marketing.contact.title')}</h2>
+              <p className="max-w-[440px] leading-normal text-pretty text-muted-foreground">
+                {t('marketing.contact.body')}
+              </p>
+            </div>
+            <ContactForm turnstileSiteKey={turnstileSiteKey} />
+          </div>
+        </section>
+
         <section className="band border-y border-line bg-red text-on-red">
           <div className={cn(wrap, 'flex flex-wrap items-center justify-between gap-7 py-16')}>
             <h2 className={cn(h2, 'max-w-[640px]')}>{t('marketing.final.title')}</h2>
@@ -302,6 +344,9 @@ export default function MarketingIndexPage() {
         )}
       >
         <AppLogo />
+        <a href="#contato" className="font-semibold text-foreground hover:text-red-text">
+          {t('marketing.nav.contact')}
+        </a>
         <p className="max-w-[560px] leading-normal">{t('marketing.footer.disclaimer')}</p>
       </footer>
     </>

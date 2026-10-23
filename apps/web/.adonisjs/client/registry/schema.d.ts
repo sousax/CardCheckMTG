@@ -451,4 +451,16 @@ export interface Registry {
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#app/marketing/controllers/marketing_controller').default['index']>>>
     }
   }
+  'contact.store': {
+    methods: ["POST"]
+    pattern: '/contact'
+    types: {
+      body: ExtractBody<InferInput<(typeof import('#marketing/validators/contact_messages').createContactMessageValidator)>>
+      paramsTuple: []
+      params: {}
+      query: ExtractQuery<InferInput<(typeof import('#marketing/validators/contact_messages').createContactMessageValidator)>>
+      response: ExtractResponse<Awaited<ReturnType<import('#app/marketing/controllers/contact_messages_controller').default['store']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#app/marketing/controllers/contact_messages_controller').default['store']>>> | { status: 422; response: { errors: SimpleError[] } }
+    }
+  }
 }

@@ -4,7 +4,7 @@ import type { InferAuthenticators, InferAuthEvents, Authenticators } from '@adon
 import { tokensGuard, tokensUserProvider } from '@adonisjs/auth/access_tokens'
 
 export const afterAuthRedirectRoute = 'decks.index'
-export const afterAuthLogoutRedirectRoute = 'auth.sign_in.show'
+export const afterAuthLogoutRedirectRoute = 'home'
 
 const authConfig = defineConfig({
   default: 'web',

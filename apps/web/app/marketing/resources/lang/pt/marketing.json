@@ -5,7 +5,8 @@
   "nav": {
     "how": "Como funciona",
     "features": "Recursos",
-    "signin": "Entrar"
+    "signin": "Entrar",
+    "contact": "Contato"
   },
   "hero": {
     "eyebrow": "Checklist de decks de Magic",
@@ -30,7 +31,7 @@
     },
     "buy": {
       "title": "Compre só o que falta",
-      "body": "O círculo mostra quanto falta e a lista de pendentes já sai pronta."
+      "body": "O círculo mostra quanto do deck você já tem e a lista de pendentes já sai pronta."
     }
   },
   "features": {
@@ -43,7 +44,7 @@
     "progress": {
       "tag": "Progresso",
       "title": "Quanto falta, num relance",
-      "body": "Cada deck mostra um círculo com a porcentagem que falta para completar. Ele acompanha o que você marca acima.",
+      "body": "Cada deck mostra um círculo com a porcentagem que você já tem. Ele acompanha o que você marca acima.",
       "owned": "tenho",
       "pending": "pendentes"
     },
@@ -58,5 +59,23 @@
   },
   "footer": {
     "disclaimer": "Imagens e dados das cartas via Scryfall. Magic: The Gathering e as artes são © Wizards of the Coast. Projeto de fã, sem afiliação."
+  },
+  "contact": {
+    "title": "Fale com a gente",
+    "body": "Achou um bug, quer sugerir algo ou só dizer oi? A mensagem chega direto no nosso e-mail e respondemos por lá.",
+    "name": "Nome",
+    "email": "E-mail",
+    "message": "Mensagem",
+    "messagePlaceholder": "Conte o que você precisa",
+    "submit": "Enviar mensagem",
+    "submitting": "Enviando…",
+    "sent": "Mensagem enviada. Obrigado! Respondemos no e-mail que você informou.",
+    "captchaFailed": "Não conseguimos confirmar que você não é um robô. Resolva a verificação e envie de novo.",
+    "dailyLimit": "Recebemos muitas mensagens hoje e pausamos o formulário. Tente de novo amanhã."
+  },
+  "emails": {
+    "contact": {
+      "subject": "Contato pelo site: {name}"
+    }
   }
 }

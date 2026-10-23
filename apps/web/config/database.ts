@@ -23,6 +23,7 @@ const dbConfig = defineConfig({
           'app/users/database/migrations',
           'app/notifications/database/migrations',
           'app/decks/database/migrations',
+          'app/marketing/database/migrations',
         ],
       },
       seeders: {

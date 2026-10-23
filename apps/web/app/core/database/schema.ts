@@ -32,6 +32,23 @@ export class AuthAccessTokenSchema extends BaseModel {
   declare updatedAt: DateTime | null
 }
 
+export class ContactMessageSchema extends BaseModel {
+  static $columns = ['createdAt', 'email', 'id', 'message', 'name', 'updatedAt'] as const
+  $columns = ContactMessageSchema.$columns
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column()
+  declare email: string
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare message: string
+  @column()
+  declare name: string
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
 export class DeckCardSchema extends BaseModel {
   static $columns = ['category', 'colorIdentity', 'createdAt', 'deckId', 'id', 'name', 'notFound', 'owned', 'quantity', 'scryfallId', 'updatedAt'] as const
   $columns = DeckCardSchema.$columns
